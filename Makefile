@@ -3,4 +3,4 @@ output:
 	@gcc kernel/nut.h -o bin/nut
 
 assembly:
-	@gcc kernel/nut.h
+	@gcc -S kernel/nut.h
