@@ -42,7 +42,7 @@ int ASCII_NUMBERS[10] = {
 #include "utils.h"
 #include "keys.h"
 #include "io.h"
-#include "aliases.h"
+#include "ui.h"
 //modules
 
 #endif //nut kernel header
