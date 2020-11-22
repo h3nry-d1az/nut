@@ -23,10 +23,10 @@ char charin() {
 
 String strin() {
 	while (charin() != ' ') {
-		commands[command_num][command_char_num] = __kernel_input();
+		commands[command_num][command_char_num] = charin();
 		command_char_num++;
 
-	} if (__kernel_input() == ' ') {
+	} if (charin() == ' ') {
 		command_char_num = 0;
 		command_num++;
 
