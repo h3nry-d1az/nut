@@ -21,7 +21,7 @@ u16 GetBoxDrawChar(u8 chn, u8 fore_color, u8 back_color) {
     return ax;
 }
 
-void DrawSimpleBox(u16 x, u16 y,
+function DrawSimpleBox(u16 x, u16 y,
     u16 width, u16 height,
     u8 fore_color, u8 back_color,
     u8 topleft_ch,
@@ -77,7 +77,7 @@ void DrawSimpleBox(u16 x, u16 y,
     vga_index = 0;
 }
 
-void DrawBox(u8 boxtype,
+function DrawBox(u8 boxtype,
     u16 x, u16 y,
     u16 width, u16 height,
     u8 fore_color, u8 back_color)
@@ -97,7 +97,7 @@ void DrawBox(u8 boxtype,
     }
 }
 
-void FillBox(u8 ch,
+function FillBox(u8 ch,
     u16 x, u16 y,
     u16 width, u16 height,
     u8 color)

@@ -3,7 +3,7 @@ Nut is a simple small kernel to make powerfull operative systems. Nut is totally
 
 
 ### Getting nut
-If you want to get the nut kernel, you have 2 options, get the built kernel in the [releases directory](https://github.com/HdbSoft/nut/releases) as a *.zip* file or build it by yourself.
+If you want to get the nut kernel, you have 2 options, get the built kernel in the [releases directory](https://github.com/HdbSoft/nut/releases) as a *.zip* file or *.h* header or build it by yourself.
 
 ###### Building nut
 The first thing you need to do is to clone the repository in your local machine:

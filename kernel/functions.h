@@ -26,4 +26,24 @@ function gotoxy(u16 x, u16 y);
 function clear_screen(u8 fore_color, u8 back_color);
 //I/O functions
 
+u16 GetBoxDrawChar(u8 chn, u8 fore_color, u8 back_color);
+function DrawSimpleBox(u16 x, u16 y,
+    u16 width, u16 height,
+    u8 fore_color, u8 back_color,
+    u8 topleft_ch,
+    u8 topbottom_ch,
+    u8 topright_ch,
+    u8 leftrightside_ch,
+    u8 bottomleft_ch,
+    u8 bottomright_ch);
+function DrawBox(u8 boxtype,
+    u16 x, u16 y,
+    u16 width, u16 height,
+    u8 fore_color, u8 back_color);
+function FillBox(u8 ch,
+    u16 x, u16 y,
+    u16 width, u16 height,
+    u8 color);
+//UI functions
+
 #endif //nut function prototypes
