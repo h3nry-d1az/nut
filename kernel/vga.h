@@ -1,6 +1,9 @@
 #ifndef NUT_VGA_H
 #define NUT_VGA_H
 
+#define VGA_WIDTH  80
+#define VGA_HEIGHT 24
+
 enum vga_color {
     BLACK,
     BLUE,
@@ -37,8 +40,7 @@ u16 vga_entry(unsigned char ch, u8 fore_color, u8 back_color) {
 }
 
 function clear_vga_buffer(u16** buffer, u8 fore_color, u8 back_color) {
-    u32 i;
-    for (i = 0; i < BUFSIZE; i++) {
+    for (u32 i = 0; i < BUFSIZE; i++) {
         (*buffer)[i] = vga_entry(NULL, fore_color, back_color);
     }
 }

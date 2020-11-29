@@ -59,10 +59,29 @@ function strout(String str, u8 fore_color, u8 back_color) {
 	}
 }
 
+function centered_strout(String str, u8 fore_color, u8 back_color) {
+	int str_length = strlen(str);
+	if (str_length < VGA_WIDTH) {
+		const int skip = (VGA_WIDTH - str_length) / 2;
+		gotox(skip);
+	}
+
+	strout(str, fore_color, back_color);
+	newline();
+}
+
 function intout(int num, u8 fore_color, u8 back_color) {
 	char str_num[digits(num) + 1];
 	ItoA(num, str_num);
 	strout(str_num, fore_color, back_color);
+}
+
+function gotox(u16 x) {
+	vga_index += x;
+}
+
+function gotoy(u16 y) {
+	vga_index = 80 * y;
 }
 
 function gotoxy(u16 x, u16 y) {
