@@ -89,18 +89,9 @@ function gotoxy(u16 x, u16 y) {
 	vga_index += x;
 }
 
-void clear_screen(u8 fore_color, u8 back_color) {
+function clear_screen(u8 fore_color, u8 back_color) {
 	clear_vga_buffer(&vga_buffer, fore_color, back_color);
 }
 //output
-
-void sleep(u32 timer_count) {
-	while (1) {
-		asm volatile("nop");
-		timer_count--;
-		if (timer_count <= 0)
-			break;
-	}
-}
 
 #endif //nut I/O module

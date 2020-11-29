@@ -11,6 +11,7 @@
 //consts
 
 #include "types.h"
+#include "functions.h"
 
 static String* commands;
 

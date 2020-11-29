@@ -1,5 +1,5 @@
 #ifndef NUT_UTILS_H
-#define GINGER_UTILS_H
+#define NUT_UTILS_H
 
 #define len(arr) \
     sizeof(arr) / sizeof(arr[0])
@@ -39,6 +39,15 @@ function ItoA(int num, String number) {
             num = num / 10;
         }
         number[dgcount] = '\0';
+    }
+}
+
+function sleep(u32 timer_count) {
+    while (1) {
+        asm volatile("nop");
+        timer_count--;
+        if (timer_count <= 0)
+            break;
     }
 }
 
