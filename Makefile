@@ -1,7 +1,7 @@
 output:
 	@# Outputs the boot & kernel assembly
-	@as --32 boot/boot.S -o bin/boot
-	@gcc kernel/nut.h -o bin/nut
+	@as --32 boot/boot.S -o bin/boot.o
+	@gcc kernel/nut.h -o bin/nut.o
 
 assembly:
 	@# Outputs assembly code
