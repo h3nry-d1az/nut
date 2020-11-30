@@ -1,5 +1,5 @@
-#ifndef NUT_VGA_H
-#define NUT_VGA_H
+#ifndef __NUT_VGA_H__
+#define __NUT_VGA_H__
 
 #define VGA_WIDTH  80
 #define VGA_HEIGHT 24

@@ -1,5 +1,5 @@
-#ifndef NUT_KEYS_H
-#define NUT_KEYS_H
+#ifndef __NUT_KEYS_H__
+#define __NUT_KEYS_H__
 
 #define KEYBOARD_PORT 0x60
 

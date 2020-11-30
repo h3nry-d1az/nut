@@ -1,5 +1,5 @@
-#ifndef NUT_KERNEL
-#define NUT_KERNEL
+#ifndef __NUT_KERNEL__
+#define __NUT_KERNEL__
 
 #define VGA_ADDRESS 0xB8000
 #define BUFSIZE     2200

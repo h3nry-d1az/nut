@@ -1,5 +1,5 @@
-#ifndef NUT_IO_H
-#define NUT_IO_H
+#ifndef __NUT_IO_H__
+#define __NUT_IO_H__
 
 u8 inb(u16 port) {
 	u8 ret;

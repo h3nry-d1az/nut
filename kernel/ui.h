@@ -1,5 +1,5 @@
-#ifndef NUT_UI_H
-#define NUT_UI_H
+#ifndef __NUT_UI_H__
+#define __NUT_UI_H__
 
 #define BOX_MAX_WIDTH  78
 #define BOX_MAX_HEIGHT 23

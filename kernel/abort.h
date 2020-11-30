@@ -1,5 +1,5 @@
-#ifndef NUT_ABORT_H
-#define NUT_ABORT_H
+#ifndef __NUT_ABORT_H__
+#define __NUT_ABORT_H__
 
 __attribute__((__noreturn__))
 function abort(String message) {

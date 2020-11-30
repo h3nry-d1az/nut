@@ -1,5 +1,5 @@
-#ifndef NUT_FUNCTIONS_H
-#define NUT_FUNCTIONS_H
+#ifndef __NUT_FUNCTIONS_H__
+#define __NUT_FUNCTIONS_H__
 
 u16 vga_entry(unsigned char ch, u8 fore_color, u8 back_color);
 function clear_vga_buffer(u16** buffer, u8 fore_color, u8 back_color);

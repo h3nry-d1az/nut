@@ -1,5 +1,5 @@
-#ifndef NUT_TYPES_H
-#define NUT_TYPES_H
+#ifndef __NUT_TYPES_H__
+#define __NUT_TYPES_H__
 
 typedef void function;
 

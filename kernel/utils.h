@@ -1,5 +1,5 @@
-#ifndef NUT_UTILS_H
-#define NUT_UTILS_H
+#ifndef __NUT_UTILS_H__
+#define __NUT_UTILS_H__
 
 #define len(arr) \
     sizeof(arr) / sizeof(arr[0])
