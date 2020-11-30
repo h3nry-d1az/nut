@@ -92,6 +92,10 @@ function gotoxy(u16 x, u16 y) {
 function clear_screen(u8 fore_color, u8 back_color) {
 	clear_vga_buffer(&vga_buffer, fore_color, back_color);
 }
+
+#define puts(s) strout(s, actual_fore_color, actual_back_color)
+#define putc(c) charout(c, actual_fore_color, actual_back_color)
+#define puti(i) intout(i, actual_fore_color, actual_back_color)
 //output
 
 #endif //nut I/O module
