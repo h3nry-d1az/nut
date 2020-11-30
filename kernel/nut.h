@@ -43,6 +43,7 @@ int ASCII_NUMBERS[10] = {
 #include "utils.h"
 #include "keys.h"
 #include "io.h"
+#include "abort.h"
 #include "ui.h"
 //modules
 
