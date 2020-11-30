@@ -1,6 +1,6 @@
 #include "../kernel/nut.h"
 
 void init() {
-	strout("Hello, World!");
+	puts("Hello, World!");
 	return;
 }

@@ -49,5 +49,6 @@ function init_vga(u8 fore_color, u8 back_color) {
     vga_buffer = (u16*)VGA_ADDRESS;
     clear_vga_buffer(&vga_buffer, fore_color, back_color);
 }
+//VGA interface functions
 
 #endif //nut vga module
