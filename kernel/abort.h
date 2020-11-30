@@ -2,13 +2,8 @@
 #define __NUT_ABORT_H__
 
 __attribute__((__noreturn__))
-function abort(String message) {
-	strout (
-		"Nut kernel v0.1.2 says:\n"
-		"ABORT!!: "
-	);
-
-	strout(message);
+function abort(String msg) {
+	Log(msg, RED, actual_back_color);
 
 	while (TRUE) {}
 	__builtin_unreachable();
