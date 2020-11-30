@@ -47,6 +47,7 @@ static u8 actual_fore_color = WHITE;
 #include "utils.h"
 #include "keys.h"
 #include "io.h"
+#include "log.h"
 #include "abort.h"
 #include "ui.h"
 //modules
