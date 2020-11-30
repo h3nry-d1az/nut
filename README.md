@@ -20,8 +20,10 @@ $ make
 Your binaries will be in the bin directory.
 
 
-### nut files
+### nut file tree
 - **kernel/nut.h:** The nut kernel header
+- **kernel/abort.h:** Kernel abort module
+- **kernel/functions.h:** Function prototypes
 - **kernel/io.h:** I/O functions
 - **kernel/keys.h:** Keyboard keys ports module
 - **kernel/types.h:** Nut data types module
@@ -30,6 +32,10 @@ Your binaries will be in the bin directory.
 - **kernel/vga.h:** VGA module
 - **boot/boot.S:** Example bootfile
 - **boot/grub.cfg:** Grub configuration file
+- **tests/hello.c:** Hello world test
+- **tests/nums.c:** Number printing test
+- **tests/input.c:** Input test
+- **tests/abort.c:** Abort test
 
 
 ### [MIT license](LICENSE.md)
@@ -58,4 +64,4 @@ SOFTWARE.
 <br>
 <br>
 
-I hope you like this repository, please give it a ⭐
+I hope you like the nut kernel.
