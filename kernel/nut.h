@@ -43,6 +43,10 @@ int ASCII_NUMBERS[10] = {
 static u8 actual_back_color = BLACK;
 static u8 actual_fore_color = WHITE;
 
+#define set_color(fore, back)\
+	actual_fore_color = fore;
+	actual_back_color = back
+
 
 #include "utils.h"
 #include "keys.h"
