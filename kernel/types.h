@@ -3,6 +3,17 @@
 
 typedef void function;
 
+typedef void   (*void_ptr)   (void);
+typedef void* (**value_ptr) (void*);
+
+typedef int    (*int_ptr)    (int);
+
+typedef float  (*float_ptr)  (float);
+typedef double (*double_ptr) (double);
+
+typedef char   (*char_ptr)   (char);
+typedef char* (**str_ptr)   (char*);
+
 typedef void*       var;
 typedef const void* val;
 
