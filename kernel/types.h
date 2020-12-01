@@ -4,7 +4,7 @@
 typedef void function;
 
 typedef void   (*void_ptr)   (void);
-typedef void* (**value_ptr) (void*);
+typedef void*  (**value_ptr) (void*);
 
 typedef int    (*int_ptr)    (int);
 

@@ -56,7 +56,10 @@ function set_color(u8 fore, u8 back) {
 #include "keys.h"
 #include "io.h"
 #include "log.h"
+
 #include "abort.h"
+#include "error.h"
+
 #include "ui.h"
 #include "proc.h"
 //modules
