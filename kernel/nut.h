@@ -1,3 +1,5 @@
+/* See more kernel developing
+info in wiki.osdev.org */
 #ifndef __NUT_KERNEL__
 #define __NUT_KERNEL__
 
