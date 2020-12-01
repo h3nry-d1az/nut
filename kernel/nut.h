@@ -1,7 +1,7 @@
 #ifndef __NUT_KERNEL__
 #define __NUT_KERNEL__
 
-#define NUT_VERSION "v0.1.2"
+#define NUT_VERSION "v0.1.3"
 
 
 #define VGA_ADDRESS 0xB8000
@@ -58,6 +58,7 @@ function set_color(u8 fore, u8 back) {
 #include "log.h"
 #include "abort.h"
 #include "ui.h"
+#include "proc.h"
 //modules
 
 #endif //nut kernel header
