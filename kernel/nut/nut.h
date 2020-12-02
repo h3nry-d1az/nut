@@ -3,7 +3,7 @@ info in wiki.osdev.org */
 #ifndef __NUT_KERNEL__
 #define __NUT_KERNEL__
 
-#define NUT_VERSION "v0.1.3"
+#define NUT_VERSION "v0.2.0"
 
 
 #define VGA_ADDRESS 0xB8000
@@ -15,7 +15,7 @@ info in wiki.osdev.org */
 #define NULL        0
 //consts
 
-#include "types.h"
+#include <nut/types.h>
 #include "functions.h"
 
 static String* commands;
@@ -42,8 +42,8 @@ int ASCII_NUMBERS[10] = {
 
 
 #include "vga.h"
-#define __def_back_color BLACK
-#define __def_fore_color WHITE
+const color __def_back_color = BLACK;
+const color __def_fore_color = WHITE;
 
 static u8 actual_back_color = BLACK;
 static u8 actual_fore_color = WHITE;
@@ -54,15 +54,14 @@ function set_color(u8 fore, u8 back) {
 }
 
 
-#include "utils.h"
-#include "keys.h"
+#include <nut/utils.h>
+#include <nut/keys.h>
 #include "io.h"
 #include "log.h"
 
 #include "abort.h"
 #include "error.h"
 
-#include "ui.h"
 #include "proc.h"
 #include "network.h"
 //modules

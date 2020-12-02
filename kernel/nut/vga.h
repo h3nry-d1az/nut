@@ -1,10 +1,10 @@
 #ifndef __NUT_VGA_H__
 #define __NUT_VGA_H__
 
-#define VGA_WIDTH  80
-#define VGA_HEIGHT 24
+const u8 VGA_WIDTH  = 80;
+const u8 VGA_HEIGHT = 24;
 
-enum vga_color {
+typedef enum vga_color {
     BLACK,
     BLUE,
     GREEN,
@@ -21,7 +21,7 @@ enum vga_color {
     BRIGHT_MAGENTA,
     YELLOW,
     WHITE,
-};
+} color;
 //VGA colors
 
 u16 vga_entry(unsigned char ch, u8 fore_color, u8 back_color) {
