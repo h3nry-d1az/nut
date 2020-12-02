@@ -1,11 +1,7 @@
 output:
 	@# Outputs the boot & kernel assembly
-	@as --32 boot/asm/boot.S -o bin/boot.o
+	@as --32 boot/asm/boot.x86.S -o bin/boot.o
 	@gcc kernel/nut.h -o bin/nut.o
-
-assembly:
-	@# Outputs assembly code
-	@gcc -S kernel/nut.h
 
 test:
 	@# Just builds the tests
