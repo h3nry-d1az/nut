@@ -21,7 +21,7 @@ stack_top:
 
 _start:
 	mov $stack_top, %esp
-	call init
+	call main
 	cli
 
 
