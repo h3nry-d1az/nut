@@ -21,6 +21,7 @@ stack_top:
 
 _start:
 	mov $stack_top, %esp
+	call NutInit
 	call main
 	cli
 

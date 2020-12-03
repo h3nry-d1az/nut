@@ -13,6 +13,7 @@ stack_top:
 
 
 _start:
+	call NutInit
 	call main
 
 loop:
