@@ -3,21 +3,23 @@ info in wiki.osdev.org */
 #ifndef __NUT_KERNEL__
 #define __NUT_KERNEL__
 
+#include <nut/types.h>
+#include <nut/utils.h>
+
+#define NULL 0
+
 const String NUT_VERSION = "v0.2.0";
 
 
-const int VGA_ADDRESS = 0xB8000;
-const int BUFSIZE     = 2200;
-
-typedef enum boolean {
-	FALSE,
-	TRUE,
-} bool;
-
-const void NULL = 0;
+const unsigned VGA_ADDRESS = 0xB8000;
+const unsigned BUFSIZE     = 2200;
 //consts
 
-#include <nut/types.h>
+typedef enum boolean {
+    FALSE,
+    TRUE,
+} bool;
+
 #include "functions.h"
 
 static String* commands;
@@ -56,7 +58,6 @@ function set_color(u8 fore, u8 back) {
 }
 
 
-#include <nut/utils.h>
 #include <nut/keys.h>
 #include "io.h"
 #include "log.h"

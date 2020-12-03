@@ -15,7 +15,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate
 	@as --32 boot/asm/$(BOOTFILE) -o bin/boot.o
-	@$(COMPILER) kernel/nut/nut.c -o bin/nut.o
+	@$(COMPILER) kernel/nut/nut.h -o bin/nut.o
 
 locate:
 	@# Locates the include/ folder in /usr/include
