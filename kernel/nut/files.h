@@ -25,7 +25,7 @@ FAT32_Sector InitFAT32(u32 size, u16 fversion,
 					   u32 rcluster, u16 info,
 					   u16 backup, u8 number,
 					   u32 id) {
-	return {
+	return (FAT32_Sector){
 		size,
 		NULL,
 		fversion,
