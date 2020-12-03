@@ -15,7 +15,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate
 	@as --32 boot/asm/$(BOOTFILE) -o bin/boot.o
-	@$(COMPILER) kernel/nut/nut.h -o bin/nut.o
+	@$(COMPILER) kernel/nut/nut.c -o bin/nut.o
 
 locate:
 	@# Locates the include/ folder in /usr/include
@@ -23,7 +23,7 @@ locate:
 
 tests:
 	@# Just builds the tests
-	@$(COMPILER) tests/hello.c -o bin/hello
-	@$(COMPILER) tests/nums.c -o bin/nums
-	@$(COMPILER) tests/input.c -o bin/input
-	@$(COMPILER) tests/abort.c -o bin/abort
+	@$(COMPILER) tests/hello.c bin/nut.o -o bin/hello
+	@$(COMPILER) tests/nums.c bin/nut.o -o bin/nums
+	@$(COMPILER) tests/input.c bin/nut.o -o bin/input
+	@$(COMPILER) tests/abort.c bin/nut.o -o bin/abort
