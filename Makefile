@@ -1,5 +1,6 @@
 ARCH     = x86
 COMPILER = gcc
+VERSION  = pre 0.2.0
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
