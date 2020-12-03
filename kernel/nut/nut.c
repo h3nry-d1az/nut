@@ -3,16 +3,18 @@ info in wiki.osdev.org */
 #ifndef __NUT_KERNEL__
 #define __NUT_KERNEL__
 
-#define NUT_VERSION "v0.2.0"
+const String NUT_VERSION = "v0.2.0";
 
 
-#define VGA_ADDRESS 0xB8000
-#define BUFSIZE     2200
+const int VGA_ADDRESS = 0xB8000;
+const int BUFSIZE     = 2200;
 
-#define TRUE        1
-#define FALSE       0
+typedef enum boolean {
+	FALSE,
+	TRUE,
+} bool;
 
-#define NULL        0
+const void NULL = 0;
 //consts
 
 #include <nut/types.h>
