@@ -1,6 +1,6 @@
 ARCH     = x86
 COMPILER = gcc
-VERSION  = pre 0.2.0
+VERSION  = 0.2.0
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
@@ -23,8 +23,18 @@ locate:
 	@cp -R kernel/include/ /usr/include/nut
 
 tests:
-	@# Just builds the tests
 	@$(COMPILER) tests/hello.c bin/nut.o -o bin/hello
 	@$(COMPILER) tests/nums.c bin/nut.o -o bin/nums
 	@$(COMPILER) tests/input.c bin/nut.o -o bin/input
 	@$(COMPILER) tests/abort.c bin/nut.o -o bin/abort
+
+release:
+	@make ARCH=$(ARCH)
+	@mkdir release
+	@mkdir release/ns
+	@cp bin/nut.o release/
+	@cp bin/boot.o release/
+	@cp -r boot/ns release/
+	@cp boot/asm/grub.cfg release/
+	@cp boot/asm/linker.ld release/
+	@zip -r nut.$(ARCH).zip release/
