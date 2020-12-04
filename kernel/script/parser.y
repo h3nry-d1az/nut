@@ -21,7 +21,8 @@
 
 
 exp             : INIT_VGA                  { init_vga(__def_fore_color, __def_back_color); }
-                | CHECK_OUT                 { CheckOut4Errors(); }
+                | CHECK_OUT                 { NutError e = CheckOut4Errors(); 
+                							  if (!IsNullError(e)) {panic(e.msg);} }
                 | CLEAR exp                 { if (strcmp($<s>2, "screen") == 0) {clear_screen(__def_fore_color, __def_back_color);} 
             								  else if (strcmp($<s>2, "errors") == 0) {clear_errors();}}
                 | HALT                      { halt(); }
