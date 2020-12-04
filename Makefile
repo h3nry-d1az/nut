@@ -51,3 +51,6 @@ clean:
 	@rm nut.$(ARCH).zip
 	@rm bin/nut.o
 	@rm bin/boot.o
+
+config:
+	@vim boot/asm/grub.cfg
