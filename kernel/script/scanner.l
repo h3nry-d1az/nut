@@ -16,6 +16,8 @@
 
 InitVGA                 return INIT_VGA;
 CheckOut                return CHECK_OUT;
+echo                    return ECHO;
+clear                   return CLEAR;
 halt                    return HALT;
 sleep                   return SLEEP;
 EndScript               return EXIT;
