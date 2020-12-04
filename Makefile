@@ -22,6 +22,10 @@ locate:
 	@# Locates the include/ folder in /usr/include
 	@cp -R kernel/include/ /usr/include/nut
 
+nutscript:
+	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
+	@flex -o kernel/script/lex.yy.c kernel/script/scanner.l
+
 tests:
 	@$(COMPILER) tests/hello.c bin/nut.o -o bin/hello
 	@$(COMPILER) tests/nums.c bin/nut.o -o bin/nums
