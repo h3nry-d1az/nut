@@ -1,29 +1,39 @@
-ARCH      = x86
-COMPILER  = gcc
-ASSEMBLER = as --32
+ARCH        = x86
+COMPILER    = gcc
+ASSEMBLER   = as --32
+INCLUDE-DIR = /usr/include
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
+	c2asm := gcc -S
 else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
+	c2asm := gcc -S
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
+	c2asm := gcc -S
+else ifeq ($(ARCH), 6502)
+	BOOTFILE := boot.6502.S
+	COMPILER = cc65
+	c2asm := cc65
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
 	ASSEMBLER := $(COMPILER)
+	c2asm := gcc -S
 else
 	BOOTFILE := boot.$(ARCH).S
+	c2asm := gcc -S
 endif
 
 output:
 	@# Outputs the boot & kernel object
-	@make locate
+	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o bin/boot.o
 	@$(COMPILER) kernel/nut/nut.h -o bin/nut.o
 
 locate:
-	@# Locates the include/ folder in /usr/include
-	@cp -R kernel/include/ /usr/include/nut
+	@# Locates the include/ folder in INCLUDE-DIR
+	@cp -R kernel/include/ $(INCLUDE-DIR)/nut
 
 nutscript:
 	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
@@ -51,6 +61,10 @@ clean:
 	@rm nut.$(ARCH).zip
 	@rm bin/nut.o
 	@rm bin/boot.o
+
+C2ASM:
+	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
+	@$(c2asm) kernel/nut/nut.h -o nut.S
 
 config:
 	@vim boot/asm/grub.cfg
