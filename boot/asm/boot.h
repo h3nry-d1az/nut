@@ -11,6 +11,8 @@ void _start() {
 	Main();
 }
 
+__attribute__((__noreturn__))
 void loop() {
-	return loop();
+	while (1) {}
+	__builtin_unreachable();
 }
