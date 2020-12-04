@@ -8,7 +8,7 @@ const int CHECKSUM = -(MAGC + FLGS);
 
 void _start() {
 	NutInit();
-	main();
+	Main();
 }
 
 void loop() {

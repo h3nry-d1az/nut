@@ -14,7 +14,7 @@ stack_top:
 
 _start:
 	call NutInit
-	call main
+	call Main
 
 loop:
 	mov r0, r0 #NOP instruction in ARM

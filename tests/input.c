@@ -1,4 +1,4 @@
-void main() {
+void Main() {
 	while (TRUE) {
 		strin();
 	}

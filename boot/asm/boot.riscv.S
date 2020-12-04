@@ -15,7 +15,7 @@ stack_top:
 
 _start:
 	call NutInit
-	call main
+	call Main
 
 loop:
 	addi x0, x0, 0 #NOP instruction in RISC-V
