@@ -1,6 +1,4 @@
-#include "../kernel/nut.h"
-
-void init() {
+void main() {
 	abort("Abort test");
 	return;
 }
