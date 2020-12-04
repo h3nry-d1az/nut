@@ -1,6 +1,6 @@
-ARCH     = x86
-COMPILER = gcc
-VERSION  = 0.2.0
+ARCH      = x86
+COMPILER  = gcc
+ASSEMBLER = as --32
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
@@ -8,6 +8,9 @@ else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
+else ifeq ($(ARCH), C)
+	BOOTFILE := boot.h
+	ASSEMBLER := $(COMPILER)
 else
 	BOOTFILE := boot.$(ARCH).S
 endif
@@ -15,7 +18,7 @@ endif
 output:
 	@# Outputs the boot & kernel object
 	@make locate
-	@as --32 boot/asm/$(BOOTFILE) -o bin/boot.o
+	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o bin/boot.o
 	@$(COMPILER) kernel/nut/nut.h -o bin/nut.o
 
 locate:
@@ -33,7 +36,7 @@ tests:
 	@$(COMPILER) tests/abort.c bin/nut.o -o bin/abort
 
 release:
-	@make ARCH=$(ARCH)
+	@make ARCH=$(ARCH) COMPILER=$(COMPILER)
 	@mkdir release
 	@mkdir release/ns
 	@cp bin/nut.o release/
