@@ -45,3 +45,9 @@ release:
 	@cp boot/asm/grub.cfg release/
 	@cp boot/asm/linker.ld release/
 	@zip -r nut.$(ARCH).zip release/
+
+clean:
+	@rm -r release/
+	@rm nut.$(ARCH).zip
+	@rm bin/nut.o
+	@rm bin/boot.o
