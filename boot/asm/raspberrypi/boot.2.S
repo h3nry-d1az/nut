@@ -1,12 +1,18 @@
 .section ".text.boot"
-
+ 
 
 .globl _start
-        .org 0x8000
+	.org 0x8000
 
 _start:
+	mrc p15, 0, r5, c0, c0, 5
+	and r5, r5, #3
+	cmp r5, #0
+	bne halt
+ 
 	// Setup the stack.
-	mov sp, #0x8000
+	ldr r5, =_start
+	mov sp, r5
  
 	// Clear out bss.
 	ldr r4, =__bss_start
@@ -23,12 +29,12 @@ _start:
 2:
 	cmp r4, r9
 	blo 1b
- 
+
 	ldr r3, =Main
 	blx r3
+ 
 
-
-//halt
+// halt
 halt:
 	wfe
 	b halt
