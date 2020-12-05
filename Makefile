@@ -44,6 +44,7 @@ tests:
 	@$(COMPILER) tests/nums.c bin/nut.o -o bin/nums
 	@$(COMPILER) tests/input.c bin/nut.o -o bin/input
 	@$(COMPILER) tests/abort.c bin/nut.o -o bin/abort
+	@$(COMPILER) tests/image.c bin/nut.o -o bin/image
 
 release:
 	@make ARCH=$(ARCH) COMPILER=$(COMPILER)
