@@ -2,27 +2,29 @@ ARCH        = x86
 COMPILER    = clang
 ASSEMBLER   = as --32
 INCLUDE-DIR = /usr/include
+c2asm       = clang -S
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
-	c2asm := clang -S
 else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
-	c2asm := clang -S
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
-	c2asm := clang -S
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
 	COMPILER = cc65
 	c2asm := cc65
+else ifeq ($(ARCH), raspberrypiABZero)
+	BOOTFILE := raspberrypi/boot.abzero.S
+else ifeq ($(ARCH), raspberrypi2)
+	BOOTFILE := raspberrypi/boot.2.S
+else ifeq ($(ARCH), raspberrypi34)
+	BOOTFILE := raspberrypi/boot.34.S
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
 	ASSEMBLER := $(COMPILER)
-	c2asm := clang -S
 else
 	BOOTFILE := boot.$(ARCH).S
-	c2asm := clang -S
 endif
 
 output:
