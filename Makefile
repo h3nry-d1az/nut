@@ -14,11 +14,11 @@ else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
 	COMPILER = cc65
 	c2asm := cc65
-else ifeq ($(ARCH), raspberrypiABZero)
+else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
 else ifeq ($(ARCH), raspberrypi2)
 	BOOTFILE := raspberrypi/boot.2.S
-else ifeq ($(ARCH), raspberrypi34)
+else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
