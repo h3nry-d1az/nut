@@ -7,6 +7,7 @@ typedef u8 VGA_Map[HEIGHT][WIDTH];
 function DrawMap(VGA_Map map) {
 	for (int i = 0; i < VGA_HEIGHT; i++) {
 		for (int j = 0; j < VGA_WIDTH; j++) {
+			gotoxy(j, i);
 			charout(' ', BLACK, (color)map[i][j]);
 		}
 	}
