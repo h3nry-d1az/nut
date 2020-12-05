@@ -4,6 +4,11 @@
 const u8 VGA_WIDTH  = 80;
 const u8 VGA_HEIGHT = 24;
 
+#define WIDTH  80
+#define HEIGHT 24
+//#define alternative
+
+
 typedef enum vga_color {
     BLACK,
     BLUE,
