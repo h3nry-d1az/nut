@@ -1,5 +1,5 @@
 ARCH        = x86
-COMPILER    = clang
+CC          = clang
 ASSEMBLER   = as --32
 INCLUDE-DIR = /usr/include
 c2asm       = clang -S
@@ -14,7 +14,7 @@ else ifeq ($(ARCH), ARM32)
 	BOOTFILE := boot.arm32.S
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
-	COMPILER = cc65
+	CC     = cc65
 	c2asm := cc65
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
@@ -24,7 +24,7 @@ else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
-	ASSEMBLER := $(COMPILER)
+	ASSEMBLER := $(CC)
 else
 	BOOTFILE := boot.$(ARCH).S
 endif
@@ -33,7 +33,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o bin/boot.o
-	@$(COMPILER) kernel/nut/nut.h -o bin/nut.o
+	@$(CC) kernel/nut/nut.h -o bin/nut.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
@@ -44,14 +44,14 @@ nutscript:
 	@flex -o kernel/script/lex.yy.c kernel/script/scanner.l
 
 tests:
-	@$(COMPILER) tests/hello.c bin/nut.o -o bin/hello
-	@$(COMPILER) tests/nums.c bin/nut.o -o bin/nums
-	@$(COMPILER) tests/input.c bin/nut.o -o bin/input
-	@$(COMPILER) tests/abort.c bin/nut.o -o bin/abort
-	@$(COMPILER) tests/image.c bin/nut.o -o bin/image
+	@$(CC) tests/hello.c bin/nut.o -o bin/hello
+	@$(CC) tests/nums.c bin/nut.o -o bin/nums
+	@$(CC) tests/input.c bin/nut.o -o bin/input
+	@$(CC) tests/abort.c bin/nut.o -o bin/abort
+	@$(CC) tests/image.c bin/nut.o -o bin/image
 
 release:
-	@make ARCH=$(ARCH) COMPILER=$(COMPILER)
+	@make ARCH=$(ARCH) COMPILER=$(CC)
 	@mkdir release
 	@mkdir release/ns
 	@cp bin/nut.o release/
