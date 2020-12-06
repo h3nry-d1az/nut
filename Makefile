@@ -10,6 +10,8 @@ else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
+else ifeq ($(ARCH), ARM32)
+	BOOTFILE := boot.arm32.S
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
 	COMPILER = cc65
