@@ -1,4 +1,4 @@
-echo /test
+echo (test
 test
 test
-test/
+test)

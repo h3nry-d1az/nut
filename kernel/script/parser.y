@@ -27,7 +27,7 @@ exp             : INIT_VGA                  { init_vga(__def_fore_color, __def_b
             								  else if (strcmp($<s>2, "errors") == 0) {clear_errors();}}
                 | HALT                      { halt(); }
                 | SLEEP exp                 { sleep($<d>2); }
-                | ECHO '/' exp '/'          { puts($<s>2); }
+                | ECHO '(' exp ')'          { puts($<s>2); }
                 | EXIT                      { return; }
                 ;
 
