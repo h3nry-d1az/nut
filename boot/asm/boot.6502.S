@@ -1,19 +1,27 @@
-MAGIC: 0x1BADB002
-FLAGS: 0
-CHECKSUM: -(MAGIC + FLAGS)
+.segment	"RODATA"
+_MAGIC:
+	.word	$B002
+_FLAGS:
+	.word	$0000
+_CHECKSUM:
+	.word	$4FFE
 
 
-_start:
-	jmp NutInit
-	jmp Main
-
-NutInit:
-.export NutInit
-
-Main:
-.export Main
+.segment	"CODE"
+.proc	__start: near
 
 
-loop:
-	nop
-	jmp loop
+.segment	"CODE"
+	call NutInit
+	call Main
+
+.endproc
+
+
+.segment	"CODE"
+.proc	_loop: near
+
+.segment	"CODE"
+	jmp _loop
+
+.endproc
