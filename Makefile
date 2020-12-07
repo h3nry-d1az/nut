@@ -6,34 +6,44 @@ c2asm       = clang -S
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
+	ARCHFILE := x86.h
 else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
+	ARCHFILE := RISC-V.h
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
+	ARCHFILE := ARM.h
 else ifeq ($(ARCH), ARM32)
 	BOOTFILE := boot.arm32.S
+	ARCHFILE := ARM32.h
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
 	CC     = cc65
 	c2asm := cc65
+	ARCHFILE := 6502.h
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
+	ARCHFILE := raspberrypiA-B-Zero.h
 else ifeq ($(ARCH), raspberrypi2)
 	BOOTFILE := raspberrypi/boot.2.S
+	ARCHFILE := raspberrypi2.h
 else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
+	ARCHFILE := raspberrypi3-4.h
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
 	ASSEMBLER := $(CC)
+	ARCHFILE := C.h
 else
 	BOOTFILE := boot.$(ARCH).S
+	ARCHFILE := $(ARCH).h
 endif
 
 output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o bin/boot.o
-	@$(CC) kernel/nut/nut.h -o bin/nut.o
+	@$(CC) kernel/nut/nut.h -I kernel/arch/$(ARCHFILE) -o bin/nut.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
