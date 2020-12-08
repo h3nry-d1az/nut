@@ -9,7 +9,9 @@
 #![no_std]
 // Don't use std crate
 
-extern {
+pub mod error;
+
+pub extern "C" {
     fn halt();
     fn panic(msg: String);
     // abort.h functions
