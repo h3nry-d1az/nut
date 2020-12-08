@@ -4,14 +4,41 @@ pub struct NutError {
 }
 // NutError implementation
 
+
+pub struct Errors {
+	cache: [NutError; 32],
+	cachei: usize,
+}
+
+impl Errors {
+	fn new() -> Errors {
+		return Errors {
+			cache: [NutError::new_null(); 32],
+			cachei: 0,
+		}
+	}
+
+	fn check(&mut self) -> NutError {
+		let e: NutError;
+		for error in self.cache.iter() {
+			e = self.cache[self.cachei];
+			self.cache[self.cachei] = NutError::new_null();
+			return e;
+		}
+
+		return NutError::new_null();
+  }
+}
+// Error collection struct
+
 impl NutError {
-    fn new(msg: String, code: i32) -> NutError {
+    fn new(msg: String, code: i32, errors: Errors) -> NutError {
         let e = NutError {
             msg: msg,
             code: code,
         };
 
-        ErrCache[ErrCacheIndex] = &mut e;
+      	errors.cache[errors.cachei] = &mut e;
 
         return e;
     }
@@ -33,17 +60,4 @@ impl NutError {
         return false;
     }
     // Is null?
-
-    fn check() -> NutError {
-        let e: NutError;
-
-        for err in ErrCache.iter() {
-            e = &mut ErrCache[ErrCacheIndex];
-            ErrCache[ErrCacheIndex] = NutError::new_null();
-            ErrCacheIndex += 1;
-            return e;
-        }
-
-        return NutError::new_null();
-    }
 }
