@@ -1,3 +1,6 @@
+# nut.rs binaries
+/nut.rs/target
+
 # Prerequisites
 *.d
 
