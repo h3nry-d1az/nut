@@ -4,6 +4,8 @@
 typedef u8 VGAMap[HEIGHT][WIDTH];
 typedef u8 Image[][WIDTH];
 
+typedef u8 Video[][WIDTH][216000];
+
 
 function DrawMap(VGAMap map) {
 	clear_screen(BLACK, BLACK);
