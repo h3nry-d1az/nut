@@ -10,6 +10,9 @@
 // Don't use std crate
 
 extern {
+    fn halt();
+    fn panic(msg: String);
+    // abort.h functions
 }
 // Please call these functions
 // inside an 'unsafe {}' code block
