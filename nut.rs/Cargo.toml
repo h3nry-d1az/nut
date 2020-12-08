@@ -1,0 +1,10 @@
+[package]
+name = "nut-rs"
+description = "nut support for rust-lang"
+version = "0.2.1"
+license-file = "../LICENSE.md"
+authors = ["HDB-PROGRAMMING <hdbprogramming@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+cc = "1.0.66"
