@@ -57,11 +57,11 @@ nutscript:
 
 test:
 	@make NUTOBJ=nut.so
-	@$(CC) -c tests/hello.c -L$(OUTPUT) -o $(OUTPUT)/hello
-	@$(CC) -c tests/nums.c -L$(OUTPUT) -o $(OUTPUT)/nums
-	@$(CC) -c tests/input.c -L$(OUTPUT) -o $(OUTPUT)/input
-	@$(CC) -c tests/abort.c -L$(OUTPUT) -o $(OUTPUT)/abort
-	@$(CC) -c tests/image.c -L$(OUTPUT) -o $(OUTPUT)/image
+	@$(CC) -c tests/hello.c -L$(OUTPUT) -o $(OUTPUT)/hello.out
+	@$(CC) -c tests/nums.c -L$(OUTPUT) -o $(OUTPUT)/nums.out
+	@$(CC) -c tests/input.c -L$(OUTPUT) -o $(OUTPUT)/input.out
+	@$(CC) -c tests/abort.c -L$(OUTPUT) -o $(OUTPUT)/abort.out
+	@$(CC) -c tests/image.c -L$(OUTPUT) -o $(OUTPUT)/image.out
 
 release:
 	@make ARCH=$(ARCH) COMPILER=$(CC)
