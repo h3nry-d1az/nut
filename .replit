@@ -1,2 +1,2 @@
 language = "bash"
-run = "make tests"
+run = "make test"
