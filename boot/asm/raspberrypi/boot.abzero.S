@@ -24,6 +24,9 @@ _start:
 	cmp r4, r9
 	blo 1b
  
+ 	ldr r3, =NutInit
+ 	blx r3
+ 
 	ldr r3, =Main
 	blx r3
 

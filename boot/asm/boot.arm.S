@@ -19,5 +19,6 @@ _start:
     cbnz    w6, 3b
 
 
-4:  bl      Main
+4:  bl      NutInit
+    bl      Main
     b 1b
