@@ -1,5 +1,6 @@
 ARCH        = x86
 CC          = clang
+OUTPUT      = bin
 ASSEMBLER   = as --32
 INCLUDE-DIR = /usr/include
 c2asm       = clang -S
@@ -42,8 +43,8 @@ endif
 output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
-	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o bin/boot.o
-	@$(CC) kernel/nut/nut.h -I kernel/arch/$(ARCHFILE) -o bin/nut.o
+	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o $(OUTPUT)/boot.o
+	@$(CC) kernel/nut/nut.h -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/nut.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
@@ -54,11 +55,11 @@ nutscript:
 	@flex -o kernel/script/lex.yy.c kernel/script/scanner.l
 
 tests:
-	@$(CC) tests/hello.c bin/nut.o -o bin/hello
-	@$(CC) tests/nums.c bin/nut.o -o bin/nums
-	@$(CC) tests/input.c bin/nut.o -o bin/input
-	@$(CC) tests/abort.c bin/nut.o -o bin/abort
-	@$(CC) tests/image.c bin/nut.o -o bin/image
+	@$(CC) tests/hello.c bin/nut.o -o $(OUTPUT)/hello
+	@$(CC) tests/nums.c bin/nut.o -o $(OUTPUT)/nums
+	@$(CC) tests/input.c bin/nut.o -o $(OUTPUT)/input
+	@$(CC) tests/abort.c bin/nut.o -o $(OUTPUT)/abort
+	@$(CC) tests/image.c bin/nut.o -o $(OUTPUT)/image
 
 release:
 	@make ARCH=$(ARCH) COMPILER=$(CC)
