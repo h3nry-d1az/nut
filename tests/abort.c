@@ -1,4 +1,4 @@
 void Main() {
-	abort("Abort test");
+	panic("Abort test");
 	return;
 }

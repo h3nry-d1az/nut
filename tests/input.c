@@ -1,5 +1,5 @@
 void Main() {
-	while (TRUE) {
+	while (1) {
 		strin();
 	}
 
