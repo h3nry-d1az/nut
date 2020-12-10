@@ -1,4 +1,5 @@
-# The nut kernel
+The nut kernel
+==============
 Nut is a simple small kernel to make powerfull operative systems. Nut is made in C/C++, ASM, Makefile, NutScript and YACC & LEX for the NutScript interpreter. Nut has got many different modules, from I/O to FAT32 file system implementation.
 
 ### Getting nut
@@ -17,6 +18,9 @@ $ make ARCH=YOUR-ARCHITECTURE
 ```
 by default, nut Makefile uses **x86** as target architecture.
 
+> **NOTE:** if you haven't build nut befor, you will need to make with the EXISTS-NUT-INCLUDE as no:
+> `$ make EXISTS-NUT-INCLUDE=no`
+
 ###### Available architectures list
 - **x86**
 - **ARM**
@@ -31,6 +35,18 @@ You can also configure your compiler by replacing CC by your compiler's name (by
 ```bash
 $ make CC=gcc
 ```
+
+your output directory:
+```bash
+$ make OUTPUT=bin
+```
+
+your assembler:
+```bash
+$ make ASSEMBLER=as
+```
+
+and more...
 
 When you finish compiling, your binaries will be in the bin directory. If you want to build the complete nut environment (boot files, kernel, boot scripts and more...) you can run this command instead:
 ```bash
