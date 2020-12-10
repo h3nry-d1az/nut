@@ -45,7 +45,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o $(OUTPUT)/boot.o
-	@$(CC) kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+	@$(CC) -c kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
