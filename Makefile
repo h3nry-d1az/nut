@@ -1,7 +1,7 @@
 ARCH        = x86
 CC          = clang
 OUTPUT      = bin
-NUTOBJ      = nut.o
+NUTOBJ      = nut.so
 ASSEMBLER   = as --32
 INCLUDE-DIR = /usr/include
 c2asm       = clang -S
@@ -45,7 +45,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o $(OUTPUT)/boot.o
-	@$(CC) kernel/nut/nut.h -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+	@$(CC) kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
