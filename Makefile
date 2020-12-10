@@ -1,10 +1,18 @@
-ARCH        = x86
-CC          = clang
-OUTPUT      = bin
-NUTOBJ      = nut.so
-ASSEMBLER   = as --32
-INCLUDE-DIR = /usr/include
-c2asm       = clang -S
+ARCH               = x86
+CC                 = clang
+OUTPUT             = bin
+NUTOBJ             = nut.so
+ASSEMBLER          = as --32
+INCLUDE-DIR        = /usr/include
+c2asm              = clang -S
+EXISTS-NUT-INCLUDE = yes
+
+
+ifeq ($(EXISTS-NUT-INCLUDE), no)
+	ACTION := mkdir $(INCLUDE-DIR)/nut
+endif
+# Make the /usr/include/nut directory
+
 
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
@@ -40,6 +48,7 @@ else
 	BOOTFILE := boot.$(ARCH).S
 	ARCHFILE := $(ARCH).h
 endif
+# Architecture configuration
 
 output:
 	@# Outputs the boot & kernel object
@@ -49,7 +58,8 @@ output:
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
-	@cp -R kernel/include/ $(INCLUDE-DIR)/nut
+	@$(ACTION)
+	@cp -R kernel/include/* $(INCLUDE-DIR)/nut/
 
 nutscript:
 	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
