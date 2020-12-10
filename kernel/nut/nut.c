@@ -57,8 +57,6 @@ function set_color(u8 fore, u8 back) {
     actual_back_color = back;
 }
 
-#include "image.h"
-
 
 #include <nut/keys.h>
 #include "io.h"
