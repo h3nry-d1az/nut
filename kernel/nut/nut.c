@@ -5,6 +5,7 @@ info in wiki.osdev.org */
 
 #include <nut/types.h>
 #include <nut/utils.h>
+#include <nut/colors.h>
 
 #define NULL 0
 
@@ -14,11 +15,6 @@ const String NUT_VERSION = "v0.2.1";
 const unsigned VGA_ADDRESS = 0xB8000;
 const unsigned BUFSIZE     = 2200;
 //consts
-
-typedef enum boolean {
-    FALSE,
-    TRUE,
-} bool;
 
 #include "functions.h"
 
