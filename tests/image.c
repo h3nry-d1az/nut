@@ -1,3 +1,5 @@
+#include <nut/image.h>
+
 void Main() {
 	VGA_Map img = {
 		{0x00, 0x02},

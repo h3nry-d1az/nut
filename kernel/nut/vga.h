@@ -8,27 +8,6 @@ const u8 VGA_HEIGHT = 24;
 #define HEIGHT 24
 //#define alternative
 
-
-typedef enum vga_color {
-    BLACK,
-    BLUE,
-    GREEN,
-    CYAN,
-    RED,
-    MAGENTA,
-    BROWN,
-    GREY,
-    DARK_GREY,
-    BRIGHT_BLUE,
-    BRIGHT_GREEN,
-    BRIGHT_CYAN,
-    BRIGHT_RED,
-    BRIGHT_MAGENTA,
-    YELLOW,
-    WHITE,
-} color;
-//VGA colors
-
 u16 vga_entry(unsigned char ch, u8 fore_color, u8 back_color) {
     u16 ax = 0;
     u8  ah = 0, al = 0;
