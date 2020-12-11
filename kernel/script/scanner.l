@@ -7,10 +7,10 @@
 %x COMMENT
 
 %%
-"(*"					BEGIN(COMMENT);
+"#="					BEGIN(COMMENT);
 <COMMENT>.
 <COMMENT>"\n"   
-<COMMENT>"*)"   		BEGIN(INITIAL);
+<COMMENT>"=#"   		BEGIN(INITIAL);
 " "
 "\n"
 
