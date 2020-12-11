@@ -1,6 +1,11 @@
 # nut.rs binaries
 /nut.rs/target
 
+# NutScript C files
+/kernel/script/y.tab.c
+/kernel/script/y.tab.h
+/kernel/script/lex.yy.c
+
 # Prerequisites
 *.d
 
