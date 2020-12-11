@@ -63,6 +63,9 @@ function set_color(u8 fore, u8 back) {
 
 #include "files.h"
 #include "network.h"
+
+
+#include "ns.h"
 //modules
 
 #endif //nut kernel header
