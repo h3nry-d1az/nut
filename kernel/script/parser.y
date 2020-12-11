@@ -2,7 +2,9 @@
 	#include <string.h>
 	int yylex();
 	void yyerror(char* s);
+
 	extern FILE* yyin;
+	char* program_name;
 %}
 
 %union {
@@ -13,21 +15,21 @@
 	char* s;
 }
 
-%token ECHO EXIT
-%right INIT_VGA CHECK_OUT CLEAR HALT SLEEP
-%right NEG
+%token PROGRAM PRINT PANIC ASSEMBLY EXIT
+%right INIT_VGA CLEAR HALT SLEEP
 	
 %%
 
 
 exp             : INIT_VGA                  { init_vga(__def_fore_color, __def_back_color); }
-                | CHECK_OUT                 { NutError e = CheckOut4Errors(); 
-                							  if (!IsNullError(e)) {panic(e.msg);} }
+				| PROGRAM exp               { program_name = $<s>2; }
+				| PRINT '"' exp '"'         { puts($<s>2); }
+				| PANIC '"' exp '"'         { panic($<s>2);}
+				| ASSEMBLY '"' exp '"'      { asm volatile($<s>2); }
                 | CLEAR exp                 { if (strcmp($<s>2, "screen") == 0) {clear_screen(__def_fore_color, __def_back_color);} 
             								  else if (strcmp($<s>2, "errors") == 0) {clear_errors();}}
                 | HALT                      { halt(); }
                 | SLEEP exp                 { sleep($<d>2); }
-                | ECHO '(' exp ')'          { puts($<s>2); }
                 | EXIT                      { return; }
                 ;
 
@@ -38,7 +40,7 @@ void yyerror(char* s) {
 }
 
 
-
+// execute .nut NutScripts
 void NutScript(char* fpath) {
 	yyin = fopen(fpath, "r");
 	yyparse();

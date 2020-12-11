@@ -14,12 +14,14 @@
 " "
 "\n"
 
+program                 return PROGRAM;
 InitVGA                 return INIT_VGA;
-CheckOut                return CHECK_OUT;
-echo                    return ECHO;
-clear                   return CLEAR;
-halt                    return HALT;
-sleep                   return SLEEP;
+Print                   return PRINT;
+Panic                   return PANIC;
+ASM                     return ASSEMBLY;
+Clear                   return CLEAR;
+Halt                    return HALT;
+Sleep                   return SLEEP;
 EndScript               return EXIT;
 .                       { /* not matched */ }
 %%
