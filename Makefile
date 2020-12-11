@@ -76,7 +76,7 @@ release:
 	@make ARCH=$(ARCH) COMPILER=$(CC)
 	@mkdir release
 	@mkdir release/ns
-	@cp bin/nut.o release/
+	@cp bin/$(NUTOBJ) release/
 	@cp bin/boot.o release/
 	@cp -r boot/ns release/
 	@cp boot/asm/grub.cfg release/
