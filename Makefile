@@ -60,10 +60,16 @@ endif
 
 output:
 	@# Outputs the boot & kernel object
+	@make bootfile ASSEMBLER=$(ASSEMBLER) BOOTFILE=$(BOOTFILE) OUTPUT=$(OUTPUT)
+	@make --always-make kernel INCLUDE-DIR=$(INCLUDE-DIR) CC=$(CC) ARCHFILE=$(ARCHFILE) OUTPUT=$(OUTPUT) NUTOBJ=$(NUTOBJ)
+
+kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@make nutscript
-	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/boot.o
 	@$(CC) -c kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+
+bootfile:
+	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/boot.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
