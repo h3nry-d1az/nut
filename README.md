@@ -18,8 +18,17 @@ $ make ARCH=YOUR-ARCHITECTURE
 ```
 by default, nut Makefile uses **x86** as target architecture.
 
-> **NOTE:** if you haven't build nut befor, you will need to make with the EXISTS-NUT-INCLUDE as no:
+> **NOTE:** if you haven't build nut before, you will need to make with the EXISTS-NUT-INCLUDE as no:\
 > `$ make EXISTS-NUT-INCLUDE=no`
+
+You can also cross-compile nut, by setting the CROSS-COMPILE variable to yes and setting the CC variable by your cross compiler. For example, if you want to cross-compile nut from x86 to ARM, you can run this:
+```bash
+$ make CROSS-COMPILE=yes CC=arm-linux-gnueabihf-gcc ARCH=ARM
+```
+
+> **NOTE:** by now, nut ARM boot file is unstable, so you can just make the kernel:\
+> `$ make --always-make kernel CROSS-COMPILE=yes CC=arm-linux-gnueabihf-gcc ARCH=ARM`
+
 
 ###### Available architectures list
 - **x86**
