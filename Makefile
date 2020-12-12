@@ -54,7 +54,7 @@ output:
 	@# Outputs the boot & kernel object
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@make nutscript
-	@$(ASSEMBLER) boot/asm/$(BOOTFILE) -o $(OUTPUT)/boot.o
+	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/boot.o
 	@$(CC) -c kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 locate:
@@ -76,12 +76,10 @@ test:
 release:
 	@make ARCH=$(ARCH) COMPILER=$(CC)
 	@mkdir release
-	@mkdir release/ns
 	@cp bin/$(NUTOBJ) release/
 	@cp bin/boot.o release/
-	@cp -r boot/ns release/
-	@cp boot/asm/grub.cfg release/
-	@cp boot/asm/linker.ld release/
+	@cp boot/grub.cfg release/
+	@cp boot/linker.ld release/
 	@zip -r nut.$(ARCH).zip release/
 
 clean:
