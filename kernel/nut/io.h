@@ -17,6 +17,9 @@ u8 inb(u16 port) {
 #elif defined(__RISC_V__)
 	asm volatile("ld %1, %0" : "=a"(ret) : "d"(port));
 
+#elif defined(__MOS_6502__)
+	asm volatile("ldx %1, %0" : "=a"(ret) : "d"(port));
+
 #endif
 
 	return ret;
@@ -36,6 +39,9 @@ function outb(u16 port, u8 data) {
 
 #elif defined(__RISC_V__)
 	asm volatile("ld %0, %1" : "=a"(port) : "d"(data));
+
+#elif defined(__MOS_6502__)
+	asm volatile("stx %0, %1" : "=a"(port) : "d"(data));
 
 #endif
 }
