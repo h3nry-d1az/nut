@@ -36,9 +36,6 @@ else ifeq ($(ARCH), ARM32)
 	ARCHFILE := ARM32.h
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
-	CC        = cc65
-	ASSEMBLER = cl65
-	c2asm := cc65
 	ARCHFILE := 6502.h
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
@@ -49,6 +46,9 @@ else ifeq ($(ARCH), raspberrypi2)
 else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
 	ARCHFILE := raspberrypi3-4.h
+else ifeq ($(ARCH), SPARC)
+	BOOTFILE := boot.sparc.S
+	ARCHFILE := SPARC.h
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
 	ASSEMBLER := $(CC)
