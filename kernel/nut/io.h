@@ -3,13 +3,43 @@
 
 u8 inb(u16 port) {
 	u8 ret;
+
+#ifdef __X86__
 	asm volatile("inb %1, %0" : "=a"(ret) : "d"(port));
+
+#elif defined(__ARM32__) || \
+	  defined(__ARM64__) || \
+	  defined(__RASPBERRYPI_ABZERO__) || \
+	  defined(__RASPBERRYPI_2__) || \
+	  defined(__RASPBERRYPI_34__)
+	asm volatile("ldr %1, %0" : "=a"(ret) : "d"(port));
+
+#elif defined(__RISC_V__)
+	asm volatile("ld %1, %0" : "=a"(ret) : "d"(port));
+
+#endif
+
 	return ret;
 }
+//read from port
 
 function outb(u16 port, u8 data) {
+#ifdef __X86__
 	asm volatile("outb %0, %1" : "=a"(data) : "d"(port));
+
+#elif defined(__ARM32__) || \
+	  defined(__ARM64__) || \
+	  defined(__RASPBERRYPI_ABZERO__) || \
+	  defined(__RASPBERRYPI_2__) || \
+	  defined(__RASPBERRYPI_34__)
+	asm volatile("ldr %0, %1" : "=a"(port) : "d"(data));
+
+#elif defined(__RISC_V__)
+	asm volatile("ld %0, %1" : "=a"(port) : "d"(data));
+
+#endif
 }
+//print to port
 
 char charin() {
 	char character = 0;
