@@ -5,6 +5,7 @@ NUTOBJ             = nut.so
 ASSEMBLER          = as --32
 INCLUDE-DIR        = /usr/include
 c2asm              = clang -S
+CROSS-COMPILE      = no
 EXISTS-NUT-INCLUDE = yes
 
 
@@ -12,6 +13,12 @@ ifeq ($(EXISTS-NUT-INCLUDE), no)
 	ACTION := mkdir $(INCLUDE-DIR)/nut
 endif
 # Make the /usr/include/nut directory
+
+
+ifeq ($(CROSS-COMPILE), yes)
+	ASSEMBLER = $(CC)
+endif
+# Cross-compile support
 
 
 ifeq ($(ARCH), x86)
@@ -28,7 +35,8 @@ else ifeq ($(ARCH), ARM32)
 	ARCHFILE := ARM32.h
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S
-	CC     = cc65
+	CC        = cc65
+	ASSEMBLER = cl65
 	c2asm := cc65
 	ARCHFILE := 6502.h
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
