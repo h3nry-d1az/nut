@@ -61,7 +61,7 @@ endif
 
 output:
 	@# Outputs the boot & kernel object
-	@make bootfile ASSEMBLER=$(ASSEMBLER) BOOTFILE=$(BOOTFILE) OUTPUT=$(OUTPUT) BOOTOBJ=$(BOOTOBJ)
+	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE=$(BOOTFILE) OUTPUT=$(OUTPUT) BOOTOBJ=$(BOOTOBJ)
 	@make --always-make kernel INCLUDE-DIR=$(INCLUDE-DIR) CC=$(CC) ARCHFILE=$(ARCHFILE) OUTPUT=$(OUTPUT) NUTOBJ=$(NUTOBJ)
 
 kernel:
