@@ -6,7 +6,6 @@ BOOTOBJ            = boot.o
 ASSEMBLER          = as --32
 INCLUDE-DIR        = /usr/include
 c2asm              = clang -S
-CROSS-COMPILE      = no
 EXISTS-NUT-INCLUDE = yes
 
 
@@ -14,12 +13,6 @@ ifeq ($(EXISTS-NUT-INCLUDE), no)
 	ACTION := mkdir $(INCLUDE-DIR)/nut
 endif
 # Make the /usr/include/nut directory
-
-
-ifeq ($(CROSS-COMPILE), yes)
-	ASSEMBLER = $(CC)
-endif
-# Cross-compile support
 
 
 ifeq ($(ARCH), x86)
