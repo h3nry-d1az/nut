@@ -128,7 +128,7 @@ test:
 	@$(CC) -c tests/abort.c -L$(OUTPUT) -o $(OUTPUT)/abort.out
 
 release:
-	@make ARCH=$(ARCH) COMPILER=$(CC)
+	@make ARCH=$(ARCH) COMPILER="$(CC)" ASSEMBLER="$(ASSEMBLER)"
 	@mkdir release
 	@cp bin/$(NUTOBJ) release/
 	@cp bin/boot.o release/
