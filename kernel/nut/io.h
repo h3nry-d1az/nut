@@ -17,6 +17,12 @@ u8 inb(u16 port) {
 #elif defined(__RISC_V__)
 	asm volatile("ld %1, %0" : "=a"(ret) : "d"(port));
 
+#elif defined(__SPARC__)
+	asm volatile("ldub %1, %0" : "=a"(ret) : "d"(port));
+
+#elif defined(__MIPS__)
+	asm volatile("lbu %1, %0" : "=a"(ret) : "d"(port));
+
 #elif defined(__MOS_6502__)
 	asm volatile("ldx %1, %0" : "=a"(ret) : "d"(port));
 
@@ -35,10 +41,16 @@ function outb(u16 port, u8 data) {
 	  defined(__RASPBERRYPI_ABZERO__) || \
 	  defined(__RASPBERRYPI_2__) || \
 	  defined(__RASPBERRYPI_34__)
-	asm volatile("ldr %0, %1" : "=a"(port) : "d"(data));
+	asm volatile("str %0, %1" : "=a"(port) : "d"(data));
 
 #elif defined(__RISC_V__)
-	asm volatile("ld %0, %1" : "=a"(port) : "d"(data));
+	asm volatile("sb %0, %1" : "=a"(port) : "d"(data));
+
+#elif defined(__SPARC__)
+	asm volatile("st %0, %1" : "=a"(port) : "d"(data));
+
+#elif defined(__MIPS__)
+	asm volatile("sb %0, %1" : "=a"(port) : "d"(data));
 
 #elif defined(__MOS_6502__)
 	asm volatile("stx %0, %1" : "=a"(port) : "d"(data));
