@@ -20,14 +20,28 @@ by default, nut Makefile uses **x86** as target architecture.
 
 > **NOTE:** if you haven't build nut before, you will need to make with the EXISTS-NUT-INCLUDE as no:\
 > `$ make EXISTS-NUT-INCLUDE=no`
+>
+> If you haven't got the necessary tools to build nut, you can install them by running your OS's nut setup file:\
+> `$ ./setup/setup.YOUR-OS.sh`
 
-You can also cross-compile nut, by setting the CROSS-COMPILE variable to yes and setting the CC variable by your cross compiler. For example, if you want to cross-compile nut from x86 to ARM, you can run this:
+You can also cross-compile nut, by setting the CC variable by your cross compiler and the ASSEMBLER variable by your cross assembler. For example, if you want to cross-compile nut from x86 to ARM32, you can run this:
 ```bash
-$ make CROSS-COMPILE=yes CC=arm-linux-gnueabihf-gcc ARCH=ARM
+$ make "CC=arm-linux-gnueabihf-gcc" "ASSEMBLER=arm-none-eabi-gcc -mcpu=cortex-a7 -fpic -ffreestanding" ARCH=ARM32
 ```
 
-> **NOTE:** by now, nut ARM boot file is unstable, so you can just make the kernel:\
-> `$ make --always-make kernel CROSS-COMPILE=yes CC=arm-linux-gnueabihf-gcc ARCH=ARM`
+or if you want to build nut for Sun SPARC, you can run this command:
+```bash
+$ make CC=sparc-elf-gcc ASSEMBLER=sparc-elf-as ARCH=SPARC
+```
+
+you can also build nut for MOS 6502 (by now is unstable):
+```bash
+$ make CC=cc65 ASSEMBLER=cl65 ARCH=6502
+```
+
+> **NOTE:** cross compilers are not included in nut's setup scripts, if you want to cross compile, you will need to get them by yourself.
+
+You can just build the kernel or the bootfile by running the `kernel` or the `bootfile` recipe.
 
 
 ###### Available architectures list
@@ -39,6 +53,9 @@ $ make CROSS-COMPILE=yes CC=arm-linux-gnueabihf-gcc ARCH=ARM
 - **raspberrypiA-B-Zero**
 - **raspberrypi2**
 - **raspberrypi3-4**
+- **SPARC**
+- **MIPS**
+- **C**
 
 You can also configure your compiler by replacing CC by your compiler's name (by default nut uses clang):
 ```bash
