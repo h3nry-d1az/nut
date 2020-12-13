@@ -33,7 +33,7 @@ _start:
 	ldr r3, =NutInit
 	blx r3
 
-	mov r3, =Main
+	ldr r3, =Main
 	blx r3
  
 
