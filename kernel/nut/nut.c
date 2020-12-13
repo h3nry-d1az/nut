@@ -9,7 +9,7 @@ info in wiki.osdev.org */
 
 #define NULL 0
 
-const String NUT_VERSION = "v0.2.1";
+const String NUT_VERSION = "v0.2.2";
 
 
 const unsigned VGA_ADDRESS = 0xB8000;
