@@ -1,3 +1,35 @@
+# CROSS COMPILATION TIPS FOR X86 USERS
+# --------------------------------
+# If you want to build nut for ARM (including raspberryPi and ARM 32)
+# you can cross compile the nut kernel by using the arm-linux-gnueabihf-gcc
+# compiler, and the arm-none-eabi-gcc assembler with the following flags:
+#
+# raspberryPi A, B, Zero:
+# -mcpu=arm1176jzf-s -fpic -ffreestanding -c
+#
+# raspberryPi 2, ARM32:
+# -mcpu=cortex-a7 -fpic -ffreestanding -c
+#
+# raspberryPi 3, 4, ARM64:
+# In this case, arm-none-eabi-gcc is not a valid assembler, instead, you should
+# use the following assembler with the following flags:
+#
+# aarch64-elf-as -c
+#
+#
+# If you want to build nut for MOS 6502 (by now, nut has errors with this architecture),
+# you should use the cc65 compiler and the cl65 assembler. For example:
+#
+# $ make CC=cc65 ASSEMBLER=cl65 ARCH=6502
+#
+#
+# If you want to build nut for Sun SPARC, you can use the sparc-elf-as assembler and the
+# sparc-elf-gcc compiler.
+#
+#
+# If you want to build nut for MIPS, you can use the mipsel-elf-as assembler and the mipsel-elf-gcc
+# compiler.
+
 ARCH               = x86
 CC                 = clang
 OUTPUT             = bin
