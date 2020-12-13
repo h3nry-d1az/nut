@@ -42,6 +42,9 @@ else ifeq ($(ARCH), raspberrypi3-4)
 else ifeq ($(ARCH), SPARC)
 	BOOTFILE := boot.sparc.S
 	ARCHFILE := SPARC.h
+else ifeq ($(ARCH), MIPS)
+	BOOTFILE := boot.mips.S
+	ARCHFILE := MIPS.h
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.h
 	ASSEMBLER := $(CC)
