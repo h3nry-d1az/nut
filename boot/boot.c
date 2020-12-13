@@ -6,6 +6,10 @@ const int FLAGS = FLGS;
 const int CHECKSUM = -(MAGC + FLGS);
 
 
+extern void NutInit();
+extern void Main();
+
+
 void _start() {
 	NutInit();
 	Main();
