@@ -50,40 +50,51 @@ endif
 ifeq ($(ARCH), x86)
 	BOOTFILE := boot.x86.S
 	ARCHFILE := x86.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), RISC-V)
 	BOOTFILE := boot.riscv.S
 	ARCHFILE := RISC-V.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), ARM)
 	BOOTFILE := boot.arm.S
 	ARCHFILE := ARM.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), ARM32)
 	BOOTFILE := boot.arm32.S
 	ARCHFILE := ARM32.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), 6502)
-	BOOTFILE := boot.6502.S
+	BOOTFILE := boot.6502.S -c
 	ARCHFILE := 6502.h
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
 	ARCHFILE := raspberrypiA-B-Zero.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), raspberrypi2)
 	BOOTFILE := raspberrypi/boot.2.S
 	ARCHFILE := raspberrypi2.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
 	ARCHFILE := raspberrypi3-4.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), SPARC)
 	BOOTFILE := boot.sparc.S
 	ARCHFILE := SPARC.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), MIPS)
 	BOOTFILE := boot.mips.S
 	ARCHFILE := MIPS.h
+	CFLAGS   := -c
 else ifeq ($(ARCH), C)
 	BOOTFILE := boot.c -c
 	ASSEMBLER := $(CC)
 	ARCHFILE := C.h
+	CFLAGS   := -c
 else
 	BOOTFILE := boot.$(ARCH).S
 	ARCHFILE := $(ARCH).h
+	CFLAGS   := -c
 endif
 # Architecture configuration
 
@@ -95,7 +106,7 @@ output:
 kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@make nutscript
-	@$(CC) -c kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+	@$(CC) $(CFLAGS) kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 bootfile:
 	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/$(BOOTOBJ)
