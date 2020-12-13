@@ -78,7 +78,7 @@ else ifeq ($(ARCH), MIPS)
 	BOOTFILE := boot.mips.S
 	ARCHFILE := MIPS.h
 else ifeq ($(ARCH), C)
-	BOOTFILE := boot.c
+	BOOTFILE := boot.c -c
 	ASSEMBLER := $(CC)
 	ARCHFILE := C.h
 else
@@ -89,8 +89,8 @@ endif
 
 output:
 	@# Outputs the boot & kernel object
-	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE=$(BOOTFILE) OUTPUT=$(OUTPUT) BOOTOBJ=$(BOOTOBJ)
-	@make --always-make kernel INCLUDE-DIR=$(INCLUDE-DIR) CC=$(CC) ARCHFILE=$(ARCHFILE) OUTPUT=$(OUTPUT) NUTOBJ=$(NUTOBJ)
+	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE="$(BOOTFILE)" OUTPUT="$(OUTPUT)" BOOTOBJ="$(BOOTOBJ)"
+	@make --always-make kernel INCLUDE-DIR="$(INCLUDE-DIR)" CC="$(CC)" ARCHFILE="$(ARCHFILE)" OUTPUT="$(OUTPUT)" NUTOBJ="$(NUTOBJ)"
 
 kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
