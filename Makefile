@@ -78,7 +78,7 @@ else ifeq ($(ARCH), MIPS)
 	BOOTFILE := boot.mips.S
 	ARCHFILE := MIPS.h
 else ifeq ($(ARCH), C)
-	BOOTFILE := boot.h
+	BOOTFILE := boot.c
 	ASSEMBLER := $(CC)
 	ARCHFILE := C.h
 else
