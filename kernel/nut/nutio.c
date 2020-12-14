@@ -1,6 +1,16 @@
 #ifndef __NUT_IO_H__
 #define __NUT_IO_H__
 
+#include <nut/types.h>
+#include <nut/colors.h>
+#include <nut/utils.h>
+
+#include <nut/keys.h>
+
+#include <nut/vga.h>
+#include <nut/basics.h>
+
+
 u8 inb(u16 port) {
 	u8 ret;
 
@@ -107,6 +117,20 @@ function strout(String str, u8 fore_color, u8 back_color) {
 	}
 }
 
+function gotox(u16 x) {
+	vga_index += x;
+}
+
+function gotoy(u16 y) {
+	vga_index = 80 * y;
+}
+
+function gotoxy(u16 x, u16 y) {
+	vga_index = 80 * y;
+	vga_index += x;
+}
+//goto functions
+
 function centered_strout(String str, u8 fore_color, u8 back_color) {
 	int str_length = strlen(str);
 	if (str_length < VGA_WIDTH) {
@@ -122,19 +146,6 @@ function intout(int num, u8 fore_color, u8 back_color) {
 	char str_num[digits(num) + 1];
 	ItoA(num, str_num);
 	strout(str_num, fore_color, back_color);
-}
-
-function gotox(u16 x) {
-	vga_index += x;
-}
-
-function gotoy(u16 y) {
-	vga_index = 80 * y;
-}
-
-function gotoxy(u16 x, u16 y) {
-	vga_index = 80 * y;
-	vga_index += x;
 }
 
 function clear_screen(u8 fore_color, u8 back_color) {

@@ -1,6 +1,27 @@
 #ifndef __NUT_VGA_H__
 #define __NUT_VGA_H__
 
+const unsigned VGA_ADDRESS = 0xB8000;
+const unsigned BUFSIZE = 2200;
+
+static u16*   vga_buffer;
+static u32    vga_index;
+
+static u32    next_line = 1;
+
+int ASCII_NUMBERS[10] = {
+    0x30,
+    0x31,
+    0x32,
+    0x33,
+    0x34,
+    0x35,
+    0x36,
+    0x37,
+    0x38,
+    0x39
+};
+
 const u8 VGA_WIDTH  = 80;
 const u8 VGA_HEIGHT = 24;
 
@@ -34,5 +55,10 @@ function init_vga(u8 fore_color, u8 back_color) {
     clear_vga_buffer(&vga_buffer, fore_color, back_color);
 }
 //VGA interface functions
+
+
+#include <nut/colors.h>
+
+
 
 #endif //nut vga module

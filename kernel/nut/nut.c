@@ -5,56 +5,15 @@ info in wiki.osdev.org */
 
 #include <nut/types.h>
 #include <nut/utils.h>
-#include <nut/colors.h>
 
-#define NULL 0
+#include <nut/colors.h>
+#include <nut/basics.h>
 
 const String NUT_VERSION = "v0.2.2";
 
-
-const unsigned VGA_ADDRESS = 0xB8000;
-const unsigned BUFSIZE     = 2200;
-//consts
-
-#include "functions.h"
-
-static String* commands;
-
-static u32    command_char_num = 0;
-static u32    command_num = 0;
-
-static u16*   vga_buffer;
-static u32    vga_index;
-static u32    next_line = 1;
-
-int ASCII_NUMBERS[10] = { 
-    0x30,
-    0x31,
-    0x32,
-    0x33,
-    0x34,
-    0x35,
-    0x36,
-    0x37,
-    0x38,
-    0x39
-};
+//#include "functions.h"
 
 
-#include "vga.h"
-const color __def_back_color = BLACK;
-const color __def_fore_color = WHITE;
-
-static u8 actual_back_color = BLACK;
-static u8 actual_fore_color = WHITE;
-
-function set_color(u8 fore, u8 back) {
-    actual_fore_color = fore;
-    actual_back_color = back;
-}
-
-
-#include <nut/keys.h>
 #include "log.h"
 
 #include "abort.h"
