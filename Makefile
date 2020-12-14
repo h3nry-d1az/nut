@@ -38,6 +38,7 @@ ARCH               = x86
 CC                 = clang
 OUTPUT             = bin
 NUTOBJ             = nut.so
+NUTIOOBJ           = nutio.o
 BOOTOBJ            = boot.o
 ASSEMBLER          = as --32
 INCLUDE-DIR        = /usr/include
@@ -109,8 +110,9 @@ output:
 
 kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
+	@make nutio CC="$(CC)" ARCHFILE="$(ARCHFILE)" CFLAGS="$(CFLAGS)" OUTPUT="$(OUTPUT)" NUTIOOBJ="$(NUTIOOBJ)"
 	@make nutscript
-	@$(CC) $(CFLAGS) kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+	@$(CC) $(CFLAGS) kernel/nut/nut.c $(OUTPUT)/$(NUTIOOBJ) -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 bootfile:
 	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/$(BOOTOBJ)
@@ -119,6 +121,9 @@ locate:
 	@# Locates the include/ folder in INCLUDE-DIR
 	@$(ACTION)
 	@cp -R kernel/include/* $(INCLUDE-DIR)/nut/
+
+nutio:
+	@$(CC) $(CFLAGS) kernel/nut/nutio.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTIOOBJ)
 
 nutscript:
 	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
