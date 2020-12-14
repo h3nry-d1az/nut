@@ -1,6 +1,9 @@
 #ifndef __NUT_UI_MM__
 #define __NUT_UI_MM__
 
+#include <nut/types.h>
+#include <nut/vga.h>
+
 #define BOX_MAX_WIDTH  78
 #define BOX_MAX_HEIGHT 23
 

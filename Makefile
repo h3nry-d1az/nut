@@ -36,14 +36,17 @@
 
 ARCH               = x86
 CC                 = clang
+OBJCC              = clang
 OUTPUT             = bin
 NUTOBJ             = nut.so
 NUTIOOBJ           = nutio.o
 BOOTOBJ            = boot.o
 ASSEMBLER          = as --32
 INCLUDE-DIR        = /usr/include
-c2asm              = clang -S
+C2ASM              = clang -S
 EXISTS-NUT-INCLUDE = yes
+
+OBJCFLAGS = -c
 
 
 ifeq ($(EXISTS-NUT-INCLUDE), no)
@@ -106,6 +109,7 @@ endif
 output:
 	@# Outputs the boot & kernel object
 	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE="$(BOOTFILE)" OUTPUT="$(OUTPUT)" BOOTOBJ="$(BOOTOBJ)"
+	@make modules OBJCC="$(OBJCC)" OBJCFLAGS="$(OBJCFLAGS)" OUTPUT="$(OUTPUT)"
 	@make --always-make kernel INCLUDE-DIR="$(INCLUDE-DIR)" CC="$(CC)" ARCHFILE="$(ARCHFILE)" OUTPUT="$(OUTPUT)" NUTOBJ="$(NUTOBJ)"
 
 kernel:
@@ -116,6 +120,11 @@ kernel:
 
 bootfile:
 	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/$(BOOTOBJ)
+
+modules:
+	@$(OBJCC) $(OBJCFLAGS) kernel/modules/UI.mm -o $(OUTPUT)/UI.o
+	@$(OBJCC) $(OBJCFLAGS) kernel/modules/cursor.mm $(OUTPUT)/$(NUTIOOBJ) -o $(OUTPUT)/cursor.o
+	@$(OBJCC) $(OBJCFLAGS) kernel/modules/sound.mm $(OUTPUT)/$(NUTIOOBJ) -o $(OUTPUT)/sound.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
@@ -151,9 +160,9 @@ clean:
 	@rm $(OUTPUT)/$(NUTOBJ)
 	@rm $(OUTPUT)/$(BOOTOBJ)
 
-C2ASM:
+c2asm:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
-	@$(c2asm) kernel/nut/nut.h -o nut.S
+	@$(C2ASM) kernel/nut/nut.h -o nut.S
 
 config:
 	@vim boot/asm/grub.cfg

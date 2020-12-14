@@ -1,6 +1,8 @@
 #ifndef __NUT_VGA_H__
 #define __NUT_VGA_H__
 
+#include <nut/utils.h>
+
 const unsigned VGA_ADDRESS = 0xB8000;
 const unsigned BUFSIZE = 2200;
 

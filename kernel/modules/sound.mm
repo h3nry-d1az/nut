@@ -2,6 +2,7 @@
 #define __NUT_SOUND_MM__
 
 #include <nut/types.h>
+#include "../nut/nutio.c"
 
 function PlaySound(u32 nFrequence) {
 	u32 Div;
@@ -9,8 +10,8 @@ function PlaySound(u32 nFrequence) {
 
 	Div = 1193180 / nFrequence;
 	outb(0x43, 0xb6);
-	outb(0x42, (uint8_t) (Div) );
-	outb(0x42, (uint8_t) (Div >> 8));
+	outb(0x42, (u8) (Div) );
+	outb(0x42, (u8) (Div >> 8));
 
 	tmp = inb(0x61);
 

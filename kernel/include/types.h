@@ -14,10 +14,12 @@ typedef double (*double_ptr) (double);
 typedef char   (*char_ptr)   (char);
 typedef char* (**str_ptr)   (char*);
 
-typedef enum boolean {
+enum boolean {
     FALSE,
     TRUE,
-} bool;
+};
+
+typedef enum boolean boolean;
 //boolean data type
 
 typedef void*       var;
