@@ -1,5 +1,9 @@
 /* This kernel uses FAT-32 by now.
-More information at wiki.osdev.org/FAT */
+More information at wiki.osdev.org/FAT
+
+Book Practical file system design with
+the Be File System recomended.
+More information at nobius.org/dbg */
 #ifndef __NUT_FILESYSTEM_H__
 #define __NUT_FILESYSTEM_H__
 
