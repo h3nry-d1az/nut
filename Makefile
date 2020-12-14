@@ -17,6 +17,10 @@
 # aarch64-elf-as -c
 #
 #
+# If you want to build nut for RISC-V, you can use the riscv64-linux-gnu-as assembler and the
+# riscv64-linux-gnu-gcc compiler
+#
+#
 # If you want to build nut for MOS 6502 (by now, nut has errors with this architecture),
 # you should use the cc65 compiler and the cl65 assembler. For example:
 #
