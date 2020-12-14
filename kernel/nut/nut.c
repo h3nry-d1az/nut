@@ -55,7 +55,6 @@ function set_color(u8 fore, u8 back) {
 
 
 #include <nut/keys.h>
-#include "io.h"
 #include "log.h"
 
 #include "abort.h"
