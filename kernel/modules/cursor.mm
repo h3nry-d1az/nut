@@ -1,5 +1,5 @@
-#ifndef __NUT_CURSOR_M__
-#define __NUT_CURSOR_M__
+#ifndef __NUT_CURSOR_MM__
+#define __NUT_CURSOR_MM__
 
 #include <nut/types.h>
 
