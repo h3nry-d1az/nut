@@ -59,7 +59,6 @@ function set_color(u8 fore, u8 back) {
 #include "log.h"
 
 #include "abort.h"
-#include "error.h"
 
 #include "files.h"
 #include "network.h"
