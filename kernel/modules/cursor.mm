@@ -2,7 +2,7 @@
 #define __NUT_CURSOR_MM__
 
 #include <nut/types.h>
-#include "../nut/nutio.c"
+#include <nut/stdio.h>
 
 function EnableCursor(u8 cursor_start, u8 cursor_end) {
 	outb(0x3D4, 0x0A);

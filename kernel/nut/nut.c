@@ -9,6 +9,9 @@ info in wiki.osdev.org */
 #include <nut/colors.h>
 #include <nut/basics.h>
 
+#include <nut/stdio.h>
+
+
 const String NUT_VERSION = "v0.2.3";
 
 //#include "functions.h"
