@@ -148,8 +148,7 @@ release:
 
 clean:
 	@make rmbins
-	@rm -r release/
-	@rm nut.$(ARCH).zip
+	@make rmrelease
 
 rmbins:
 	@rm $(OUTPUT)/$(NUTOBJ)
@@ -157,6 +156,10 @@ rmbins:
 	@rm $(OUTPUT)/UI.o
 	@rm $(OUTPUT)/cursor.o
 	@rm $(OUTPUT)/sound.o
+
+rmrelease:
+	@rm -r release/
+	@rm nut.$(ARCH).zip
 
 c2asm:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
