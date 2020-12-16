@@ -36,7 +36,6 @@
 
 ARCH               = x86
 CC                 = clang
-OBJCC              = clang
 OUTPUT             = bin
 NUTOBJ             = nut.so
 BOOTOBJ            = boot.o
@@ -44,8 +43,6 @@ ASSEMBLER          = as --32
 INCLUDE-DIR        = /usr/include
 C2ASM              = clang -S
 EXISTS-NUT-INCLUDE = yes
-
-OBJCFLAGS = -c
 
 
 ifeq ($(EXISTS-NUT-INCLUDE), no)
@@ -120,9 +117,9 @@ bootfile:
 	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/$(BOOTOBJ)
 
 modules:
-	@$(OBJCC) $(OBJCFLAGS) kernel/modules/UI.mm -o $(OUTPUT)/UI.o
-	@$(OBJCC) $(OBJCFLAGS) kernel/modules/cursor.mm $(OUTPUT)/$(NUTIOOBJ) -o $(OUTPUT)/cursor.o
-	@$(OBJCC) $(OBJCFLAGS) kernel/modules/sound.mm $(OUTPUT)/$(NUTIOOBJ) -o $(OUTPUT)/sound.o
+	@$(CC) $(CFLAGS) kernel/modules/ui.c -o $(OUTPUT)/UI.o
+	@$(CC) $(CFLAGS) kernel/modules/cursor.c -o $(OUTPUT)/cursor.o
+	@$(CC) $(CFLAGS) kernel/modules/sound.c -o $(OUTPUT)/sound.o
 
 locate:
 	@# Locates the include/ folder in INCLUDE-DIR
