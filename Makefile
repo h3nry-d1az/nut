@@ -151,6 +151,9 @@ clean:
 	@rm nut.$(ARCH).zip
 	@rm $(OUTPUT)/$(NUTOBJ)
 	@rm $(OUTPUT)/$(BOOTOBJ)
+	@rm $(OUTPUT)/UI.o
+	@rm $(OUTPUT)/cursor.o
+	@rm $(OUTPUT)/sound.o
 
 c2asm:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
