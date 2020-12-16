@@ -7,13 +7,6 @@
 #define len(arr) \
     sizeof(arr) / sizeof(arr[0])
 
-u32 strlen(const String str) {
-    u32 length = 0;
-    while (str[length])
-        length++;
-    return length;
-}
-
 u32 digits(int num) {
     u32 count = 0;
     if (num == 0)
