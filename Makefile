@@ -147,8 +147,11 @@ release:
 	@zip -r nut.$(ARCH).zip release/
 
 clean:
+	@make rmbins
 	@rm -r release/
 	@rm nut.$(ARCH).zip
+
+rmbins:
 	@rm $(OUTPUT)/$(NUTOBJ)
 	@rm $(OUTPUT)/$(BOOTOBJ)
 	@rm $(OUTPUT)/UI.o
