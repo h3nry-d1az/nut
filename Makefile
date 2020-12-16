@@ -140,8 +140,11 @@ test:
 release:
 	@make ARCH=$(ARCH) COMPILER="$(CC)" ASSEMBLER="$(ASSEMBLER)"
 	@mkdir release
-	@cp bin/$(NUTOBJ) release/
-	@cp bin/boot.o release/
+	@cp $(OUTPUT)/$(NUTOBJ) release/
+	@cp $(OUTPUT)/$(BOOTOBJ) release/
+	@cp $(OUTPUT)/UI.o release/
+	@cp $(OUTPUT)/cursor.o release/
+	@cp $(OUTPUT)/sound.o release/
 	@cp boot/grub.cfg release/
 	@cp boot/linker.ld release/
 	@zip -r nut.$(ARCH).zip release/

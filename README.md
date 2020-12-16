@@ -26,7 +26,7 @@ by default, nut Makefile uses **x86** as target architecture.
 
 You can also cross-compile nut, by setting the CC variable by your cross compiler and the ASSEMBLER variable by your cross assembler. For example, if you want to cross-compile nut from x86 to ARM32, you can run this:
 ```bash
-$ make "CC=arm-linux-gnueabihf-gcc" "ASSEMBLER=arm-none-eabi-gcc -mcpu=cortex-a7 -fpic -ffreestanding" ARCH=ARM32
+$ make "CC=arm-linux-gnueabihf-gcc" "ASSEMBLER=arm-none-eabi-gcc -mcpu=cortex-a7 -fpic -ffreestanding -c" ARCH=ARM32
 ```
 
 or if you want to build nut for Sun SPARC, you can run this command:
