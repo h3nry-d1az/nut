@@ -7,9 +7,9 @@
 /kernel/script/lex.yy.c
 
 # nut docs files
-/docs/nut.pdf
-/docs/nut.log
-/docs/nut.aux
+/nut.pdf
+/nut.log
+/nut.aux
 
 # Prerequisites
 *.d
