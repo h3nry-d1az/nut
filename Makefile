@@ -126,6 +126,9 @@ locate:
 	@$(ACTION)
 	@cp -R kernel/include/* $(INCLUDE-DIR)/nut/
 
+docs:
+	@pdflatex docs/nut.tex
+
 nutscript:
 	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
 	@flex -o kernel/script/lex.yy.c kernel/script/scanner.l
