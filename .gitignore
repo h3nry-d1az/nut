@@ -6,6 +6,11 @@
 /kernel/script/y.tab.h
 /kernel/script/lex.yy.c
 
+# nut docs files
+/docs/nut.pdf
+/docs/nut.log
+/docs/nut.aux
+
 # Prerequisites
 *.d
 
