@@ -62,4 +62,85 @@ String strncpy(String dest, String src, int len) {
     return dest;
 }
 
+int __format(String buffer,
+    int val,
+    int width,
+    int zeropad,
+    int base,
+    int hexprefix)
+{
+    int bi = 0;
+    char pb[10];
+    int pbi = 0;
+
+    if (hexprefix == 1) {
+        buffer[0] = '0';
+        buffer[1] = 'x';
+        bi = 2;
+        if (width > 2)
+            width -= 2;
+        else
+            width = 0;
+    }
+
+    while (pbi < 10) {
+        pb[pbi] = '0';
+        pbi++;
+    }
+
+    if (base == 10)
+        __str_base10(pb, val);
+    else if (base == 16)
+        __str_base16(pb, val);
+    else
+        abort();
+
+    while (width > 10) {
+        if (zeropad == 1)
+            buffer[bi] = '0';
+        else
+            buffer[bi] = ' ';
+        bi++;
+        width--;
+    }
+
+
+    if (width == 0) {
+        int c = 0;
+        int started = 0;
+
+        while (c < 10) {
+            if (pb[c] != '0')
+                started = 1;
+            if (started) {
+                buffer[bi] = pb[c];
+                bi++;
+            }
+            c++;
+        }
+
+        if (started == 0) {
+            buffer[bi] = '0';
+            bi++;
+        }
+    }
+    else {
+        int c = 10 - width;
+        int started = 0;
+        while (c < 10) {
+            if (pb[c] != '0')
+                started = 1;
+            if (started)
+                buffer[bi] = pb[c];
+            else if (zeropad == 1)
+                buffer[bi] = '0';
+            else
+                buffer[bi] = ' ';
+            bi++;
+            c++;
+        }
+    }
+    return bi;
+}
+
 #endif //nut string module
