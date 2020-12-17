@@ -105,7 +105,7 @@ endif
 output:
 	@# Outputs the boot & kernel object
 	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE="$(BOOTFILE)" OUTPUT="$(OUTPUT)" BOOTOBJ="$(BOOTOBJ)"
-	@make modules OBJCC="$(OBJCC)" OBJCFLAGS="$(OBJCFLAGS)" OUTPUT="$(OUTPUT)"
+	@make modules CC="$(CC)" CFLAGS="$(CFLAGS)" OUTPUT="$(OUTPUT)"
 	@make --always-make kernel INCLUDE-DIR="$(INCLUDE-DIR)" CC="$(CC)" ARCHFILE="$(ARCHFILE)" OUTPUT="$(OUTPUT)" NUTOBJ="$(NUTOBJ)"
 
 kernel:
