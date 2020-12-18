@@ -50,4 +50,18 @@ typedef long double f128;
 typedef char           str[];
 typedef char*          String;
 
+#ifdef __8_BITS__
+typedef char          isize;
+typedef unsigned char usize;
+#elif defined(__16_BITS__)
+typedef short          isize;
+typedef unsigned short usize;
+#elif defined(__32_BITS__)
+typedef int      isize;
+typedef unsigned usize;
+#elif defined(__64_BITS__)
+typedef long          isize;
+typedef unsigned long usize;
+#endif
+
 #endif //nut data types
