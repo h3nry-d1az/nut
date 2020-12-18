@@ -14,7 +14,7 @@ info in wiki.osdev.org */
 
 const String NUT_VERSION = "v0.2.3";
 
-//#include "functions.h"
+#include "functions.h"
 
 
 #include "log.h"
