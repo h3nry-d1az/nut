@@ -74,6 +74,9 @@ else ifeq ($(ARCH), ARM32)
 	BOOTFILE := boot.arm32.S
 	ARCHFILE := ARM32.h
 	CFLAGS   := -c
+else ifeq ($(ARCH), GBA)
+	BOOTFILE := boot.gba.S
+	ARCHFILE := GBA.h
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S -c
 	ARCHFILE := 6502.h
