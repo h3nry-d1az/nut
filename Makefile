@@ -33,6 +33,10 @@
 #
 # If you want to build nut for MIPS, you can use the mipsel-elf-as assembler and the mipsel-elf-gcc
 # compiler.
+#
+# If you want to build nut for GBA, you can use the arm-eabi-gcc compiler and assembler with the following flags:
+# -mthumb-interwork -specs=gba.specs
+#
 
 ARCH               = x86
 CC                 = clang
