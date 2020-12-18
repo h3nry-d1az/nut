@@ -39,8 +39,10 @@
 #
 
 ARCH               = x86
+CPUBITS            = 64
 CC                 = clang
 OUTPUT             = bin
+NUTSRC             = nut.c
 NUTOBJ             = nut.so
 BOOTOBJ            = boot.o
 ASSEMBLER          = as --32
@@ -77,9 +79,11 @@ else ifeq ($(ARCH), ARM32)
 else ifeq ($(ARCH), GBA)
 	BOOTFILE := boot.gba.S
 	ARCHFILE := GBA.h
+	CPUBITS = 32
 else ifeq ($(ARCH), 6502)
 	BOOTFILE := boot.6502.S -c
 	ARCHFILE := 6502.h
+	CPUBITS = 8
 else ifeq ($(ARCH), raspberrypiA-B-Zero)
 	BOOTFILE := raspberrypi/boot.abzero.S
 	ARCHFILE := raspberrypiA-B-Zero.h
@@ -92,6 +96,7 @@ else ifeq ($(ARCH), raspberrypi3-4)
 	BOOTFILE := raspberrypi/boot.34.S
 	ARCHFILE := raspberrypi3-4.h
 	CFLAGS   := -c
+	CPUBITS = 64
 else ifeq ($(ARCH), SPARC)
 	BOOTFILE := boot.sparc.S
 	ARCHFILE := SPARC.h
@@ -116,12 +121,12 @@ output:
 	@# Outputs the boot & kernel object
 	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE="$(BOOTFILE)" OUTPUT="$(OUTPUT)" BOOTOBJ="$(BOOTOBJ)"
 	@make modules CC="$(CC)" CFLAGS="$(CFLAGS)" OUTPUT="$(OUTPUT)"
-	@make --always-make kernel INCLUDE-DIR="$(INCLUDE-DIR)" CC="$(CC)" ARCHFILE="$(ARCHFILE)" OUTPUT="$(OUTPUT)" NUTOBJ="$(NUTOBJ)"
+	@make --always-make kernel INCLUDE-DIR="$(INCLUDE-DIR)" CC="$(CC)" ARCHFILE="$(ARCHFILE)" OUTPUT="$(OUTPUT)" NUTSRC="$(NUTSRC)" NUTOBJ="$(NUTOBJ)"
 
 kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
 	@make nutscript
-	@$(CC) $(CFLAGS) kernel/nut/nut.c -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
+	@$(CC) $(CFLAGS) kernel/nut/$(NUTSRC) -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 bootfile:
 	@$(ASSEMBLER) boot/$(BOOTFILE) -o $(OUTPUT)/$(BOOTOBJ)
