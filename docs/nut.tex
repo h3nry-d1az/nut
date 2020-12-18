@@ -7,60 +7,96 @@
 \begin{document}
   \maketitle
   \newpage
+  \begin{center}
+    This is an open source document, you can find it in nut's source code (github.com/HdbSoft/nut)
+  \end{center}
+  \newpage
 
   \begin{enumerate}
-  	\LARGE \item Introduction
+  	\Large \item Introduction
+    \large \subitem What is nut?
+    \large \subitem Which languages are supported?
+    \large \subitem Is nut free?
   	\\
-  	\LARGE \item Building nut
-    \Large \subitem Setting up dependencies
-    \Large \subitem Using the Makefile
-  	\Large \subitem Building for x86 target
-  	\Large \subitem ARM \& raspberry Pi target
-  	\Large \subitem RISC-V target
-  	\Large \subitem SPARC target
-  	\Large \subitem MIPS target
-  	\Large \subitem MOS 6502 target
-
-  	\LARGE \item The nut DLL
-  	\Large \subitem Abort module
-    \Large \subitem FAT32 module
-    \Large \subitem Network module
-
-  	\LARGE \item Nut include files
-    \Large \subitem Locating include files
-    \Large \subitem alloc.h
-    \Large \subitem basics.h
-    \Large \subitem colors.h
-    \Large \subitem error.h
-    \Large \subitem io.h
-    \Large \subitem keys.h
-    \Large \subitem py.h
-    \Large \subitem rpiGPIO.h
-    \Large \subitem string.h
-    \Large \subitem types.h
-    \Large \subitem utils.h
-    \Large \subitem vga.h
-
-    \LARGE \item Nut extra modules
-    \Large \subitem Console UI module
-    \Large \subitem Sound module
-    \Large \subitem Cursor module
-
-  	\LARGE \item NutScript, script files for nut
-  	\Large \subitem Comments
-    \Large \subitem Script properties
-    \Large \subitem I/O (Print, Sound...)
-    \Large \subitem Error
-
-    \LARGE \item Using nut with Rust
-    \Large \subitem Getting nut.rs
-    \Large \subitem Types
-    \Large \subitem I/O functions
-    \Large \subitem Memory management
-    \Large \subitem Error handling
-
-    \LARGE \item Nut utils
-    \Large \subitem GRUB file
-    \Large \subitem Linker script
+  	\Large \item Building nut
+    \large \subitem Setting up dependencies
+    \large \subitem Using the Makefile
+  	\large \subitem Building for x86 target
+  	\large \subitem ARM \& raspberry Pi target
+  	\large \subitem RISC-V target
+  	\large \subitem SPARC target
+  	\large \subitem MIPS target
+  	\large \subitem MOS 6502 target
+    \\
+  	\Large \item The nut DLL
+  	\large \subitem Abort module
+    \large \subitem FAT32 module
+    \large \subitem Network module
+    \\
+  	\Large \item Nut include files
+    \large \subitem Locating include files
+    \large \subitem ARM utils
+    \normalsize \subitem \hspace{1cm} syscalls.h
+    \normalsize \subitem \hspace{1cm} \_file.h
+    \large \subitem alloc.h module
+    \large \subitem basics.h module
+    \large \subitem colors.h module
+    \large \subitem error.h module
+    \large \subitem io.h module
+    \large \subitem keys.h module
+    \large \subitem py.h module
+    \large \subitem rpiGPIO.h module
+    \large \subitem string.h module
+    \large \subitem types.h module
+    \large \subitem utils.h module
+    \large \subitem vga.h module
+    \\
+    \Large \item Nut extra modules
+    \large \subitem Console UI module
+    \large \subitem Sound module
+    \large \subitem Cursor module
+    \\
+  	\Large \item NutScript, script files for nut
+  	\large \subitem Comments
+    \large \subitem Script properties
+    \large \subitem I/O (Print, Sound...)
+    \large \subitem Error
+    \\
+    \Large \item Using nut with Rust
+    \large \subitem Getting nut.rs
+    \large \subitem Types
+    \large \subitem I/O functions
+    \large \subitem Memory management
+    \large \subitem Error handling
+    \\
+    \Large \item Nut utils
+    \large \subitem GRUB file
+    \large \subitem Linker script
   \end{enumerate}
+  \newpage
+
+  \section{Introduction}
+  Welcome to the nut kernel documentation, in this book, you will learn all the nut kernel features, from building it from x86 to RISC-V, ARM and other platforms, to create scripts and use this kernel with Rust lang. By now, nut is in an unstable version, with bugs and errors; if you want to use nut in your OS, consider these warnings:
+  \begin{itemize}
+    \item There could be some errors in your OS.
+    \item Your OS will be unstable.
+    \item You could have some security failures.
+  \end{itemize}
+  No more things to say so let's get started!
+  \\
+  \subsection{What is nut?}
+  Nut is and open source kernel that lets you build fast and efficient operating systems for multiple platforms, by now, these are the supported platforms:
+  \begin{itemize}
+    \item x86
+    \item ARM
+    \item ARM32
+    \item RISC-V
+    \item 6502
+    \item raspberry Pi A, B, Zero
+    \item raspberry Pi 2
+    \item raspberry Pi 3, 4
+    \item SPARC
+    \item MIPS
+  \end{itemize}
+
 \end{document}
