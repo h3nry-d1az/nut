@@ -45,6 +45,7 @@ C2ASM              = clang -S
 EXISTS-NUT-INCLUDE = yes
 
 LATEX = pdflatex
+TO    = /dev/null
 
 
 ifeq ($(EXISTS-NUT-INCLUDE), no)
@@ -129,7 +130,7 @@ locate:
 	@cp -R kernel/include/* $(INCLUDE-DIR)/nut/
 
 docs:
-	@$(LATEX) docs/nut.tex
+	@$(LATEX) docs/nut.tex > $(TO)
 
 nutscript:
 	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
