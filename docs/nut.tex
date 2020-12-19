@@ -81,7 +81,7 @@
   \newpage
 
   \section{Introduction}
-  Welcome to the nut kernel documentation, in this book, you will learn all the nut kernel features, from building it from x86 to RISC-V, ARM and other platforms, to create scripts and use this kernel with Rust lang. By now, nut is in an unstable version, with bugs and errors; if you want to use nut in your OS, consider these warnings:
+  Welcome to the nut kernel documentation, in this book, you will learn all the nut kernel features, from building it from x86 to RISC-V, ARM and other platforms, to create scripts and use nut with Rust lang. By now, nut is in an unstable version, with bugs and errors; if you want to use nut in your OS, consider these warnings:
   \begin{itemize}
     \item There could be some errors in your OS.
     \item Your OS will be unstable.
@@ -104,5 +104,11 @@
     \item SPARC
     \item MIPS
   \end{itemize}
-
+  If you want to use nut in another platform, you can adapt it by yourself, for example, if you want to use nut in PowerPC, you can build the boot file and compile the kernel by yourself (our Makefile offers help with every architecture).
+  \\
+  \subsection{Which languages are supported?}
+  By now, nut supports 3 different languages: C, C++ and Rust. If you want to use nut with Rust, our API does not support GBA builds, but you can build your own GBA Rust API.
+  \\
+  \subsection{Is nut free?}
+  Yes, nut is totally free free and open source, no private binaries here, just pure source code made in C/C++, assembly language, Rust, Makefile, YACC and LEX.
 \end{document}
