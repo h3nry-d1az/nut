@@ -1,7 +1,7 @@
 #ifndef __NUT_GBA_SCENES__
 #define __NUT_GBA_SCENES__
 
-#include <nut/pixel.h>
+#include <nut/gba/pixel.h>
 
 
 typedef struct __SCENE__ {
