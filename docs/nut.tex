@@ -128,4 +128,21 @@
   Finally, move into the source directory:
   \begin{lstlisting}[language=bash]
   cd nut/\end{lstlisting}
+  And you will have nut cloned.
+  \\
+  \subsection{Setting up dependencies}
+  In this part, you must have cloned nut, if you don't, jump to the previous section. Now, just run your OS's dependencies setup (if you are in macOS, make sure you have Homebrew installed):
+  \begin{lstlisting}[language=bash]
+  bash setup/setup.deb.sh #debian based OSs
+  bash setup/setup.dnf.sh #RHEL based OSs
+  bash setup/setup.arch.sh #Arch LINUX based OSs
+  bash setup/setup.osx.sh #macOS\end{lstlisting}
+  The setup will install the following packages:
+  \begin{itemize}
+  	\item clang
+  	\item bison
+  	\item flex
+  	\item make
+  \end{itemize}
+  Now you are ready to build nut.
 \end{document}
