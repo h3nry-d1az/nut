@@ -145,4 +145,22 @@
   	\item make
   \end{itemize}
   Now you are ready to build nut.
+  \\
+  \subsection{Using the Makefile}
+  In this part I'm going to try to explain a bit how nut's Makefile works. First, the Makefile declares the following variables:
+  \begin{itemize}
+  	\item ARCH to x86
+  	\item CPUBITS to 64
+  	\item CC to clang
+  	\item OUTPUT to bin
+  	\item NUTSRC to nut.c
+  	\item NUTOBJ to nut.so
+  	\item BOOTOBJ to boot.o
+  	\item ASSEMBLER to as --32
+  	\item INCLUDE-DIR to /usr/include
+  	\item C2ASM to clang -S
+  	\item EXISTS-NUT-INCLUDE to yes
+  	\item LATEX to pdflatex
+  	\item TO to /dev/null
+  \end{itemize}
 \end{document}
