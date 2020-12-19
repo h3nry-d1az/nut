@@ -155,6 +155,59 @@ function clear_screen(u8 fore_color, u8 back_color) {
 void puts(String s) { strout(s, actual_fore_color, actual_back_color);  }
 void putc(char c)   { charout(c, actual_fore_color, actual_back_color); }
 void puti(int i)    { intout(i, actual_fore_color, actual_back_color);  }
+
+void printf(char* str, ...) {
+	int* var_args = &str - 4;
+	char buffer[200];
+	int si = 0, bi = 0, pi = 0;
+
+	while (str[si]) {
+		if (str[si] != '%') {
+			buffer[bi] = str[si];
+			bi++;
+			si++;
+		}
+		else {
+			int w = 0, zp = 0, pp = 0;
+
+			si++;
+			if (str[si] == '#') {
+				pp = 1;
+				si++;
+			}
+			if (str[si] == '0') {
+				zp = 1;
+				si++;
+			}
+			if (str[si] >= '1' && str[si] <= '9') {
+				w = str[si] - '0';
+				si++;
+				if (str[si] >= '0' && str[si] <= '9') {
+					w = w * 10;
+					w += str[si] - '0';
+					si++;
+				}
+			}
+			if (str[si] == 's') {
+				int l = strlen(var_args[pi]);
+				strcpy(buffer + bi, var_args[pi]);
+				bi += l;
+			}
+			else if (str[si] == 'd') {
+				int v = var_args[pi];
+				bi += __format(buffer + bi, v, w, zp, 10, 0);
+			}
+			else if (str[si] == 'x') {
+				int v = var_args[pi];
+				bi += __format(buffer + bi, v, w, zp, 16, pp);
+			}
+			pi--;
+			si++;
+		}
+	}
+	buffer[bi] = 0;
+	puts(buffer);
+}
 //output
 
 #endif //nut I/O module
