@@ -11,6 +11,7 @@
 
 pub mod error;
 pub mod keys;
+pub mod colors;
 
 pub extern "C" {
     fn halt();
