@@ -2,7 +2,7 @@
 #define __NUT_SOUND_MM__
 
 #include <nut/types.h>
-#include <nut/stdio.h>
+#include <nut/io.h>
 
 function PlaySound(u32 nFrequence) {
 	u32 Div;
