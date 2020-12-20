@@ -10,6 +10,7 @@
 // Don't use std crate
 
 pub mod error;
+pub mod keys;
 
 pub extern "C" {
     fn halt();
