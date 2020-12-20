@@ -38,6 +38,13 @@
 # -mthumb-interwork -specs=gba.specs
 #
 
+# DOCS COMPILATION TIPS
+# --------------------
+# By default, Makefile is configured to build LaTeX to .pdf file by using pdflatex,
+# you can build docs to HTML file by using latex2html:
+#
+# $ make --always-make docs LATEX=latex2html
+
 ARCH               = x86
 CPUBITS            = 64
 CC                 = clang
