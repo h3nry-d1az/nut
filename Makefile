@@ -171,6 +171,9 @@ clean:
 	@make rmbins
 	@make rmrelease
 
+clean-include:
+	@rm -r $(INCLUDE-DIR)/nut/*
+
 rmbins:
 	@rm $(OUTPUT)/$(NUTOBJ)
 	@rm $(OUTPUT)/$(BOOTOBJ)
