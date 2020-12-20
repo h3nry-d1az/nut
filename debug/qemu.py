@@ -4,6 +4,7 @@ import pexpect
 
 qemu-cmd = 'qemu-system-'
 qemu-cmd += config.machine + ' '
+qemu-cmd += config.flags
 qemu-cmd += config.image
 # QEMU command to run
 

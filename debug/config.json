@@ -2,5 +2,6 @@
   "user":     "root",
   "password": "change",
   "machine":  "x86",
-  "image":    "image.img"
+  "image": "image.img",
+  "flags": ""
 }
