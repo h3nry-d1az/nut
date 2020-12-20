@@ -1,11 +1,10 @@
 import json
 
 
-def loadJSON(path:str, property:str) -> list:
-	res = []
+def loadJSON(path:str, property:str) -> str:
+	res = ""
 	with open(path) as content:
 		loaded_json = json.load(content)
-		for result in loaded_json:
-			res.append(result.get(property))
+		res = loaded_json.get(property)
 
 	return res
