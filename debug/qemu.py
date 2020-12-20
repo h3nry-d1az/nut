@@ -2,20 +2,20 @@ import config
 import pexpect
 
 
-qemu-cmd = 'qemu-system-'
-qemu-cmd += config.machine + ' '
-qemu-cmd += config.flags
-qemu-cmd += config.image
+qemu_cmd = 'qemu-system-'
+qemu_cmd += config.machine + ' '
+qemu_cmd += config.flags
+qemu_cmd += config.image
 # QEMU command to run
 
 
-child = pexpect.spawn(qemu-cmd)
+child = pexpect.spawn(qemu_cmd)
 child.logfile = sys.stdout
 
 child.expect('(?i)login:')
-child.sendline(user)
+child.sendline(config.user)
 child.expect('(?i)password:')
-child.sendline(password)
+child.sendline(config.password)
 child.expect('# ')
 
 
