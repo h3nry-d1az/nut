@@ -1,7 +1,7 @@
 fn main() -> () {
     cc::Build::new()
                .file("../kernel/nut/nut.c")
-               .compile("nut.so");
+               .compile("nut.o");
 
-    println!("cargo:rustc-link-lib=nut.so");
+    println!("cargo:rustc-link-lib=nut.o");
 } //nut.rs build script
