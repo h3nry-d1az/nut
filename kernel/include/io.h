@@ -108,11 +108,11 @@ function charout(char character, u8 fore_color, u8 back_color) {
 	vga_index++;
 }
 
-function strout(String str, u8 fore_color, u8 back_color) {
+function strout(String string, u8 fore_color, u8 back_color) {
 	u32 index = 0;
 
-	while (str[index]) {
-		charout(str[index], fore_color, back_color);
+	while (string[index]) {
+		charout(string[index], fore_color, back_color);
 		index++;
 	}
 }
@@ -131,14 +131,14 @@ function gotoxy(u16 x, u16 y) {
 }
 //goto functions
 
-function centered_strout(String str, u8 fore_color, u8 back_color) {
-	int str_length = strlen(str);
+function centered_strout(String string, u8 fore_color, u8 back_color) {
+	int str_length = strlen(string);
 	if (str_length < VGA_WIDTH) {
 		const int skip = (VGA_WIDTH - str_length) / 2;
 		gotox(skip);
 	}
 
-	strout(str, fore_color, back_color);
+	strout(string, fore_color, back_color);
 	newline();
 }
 
@@ -156,7 +156,7 @@ void puts(String s) { strout(s, actual_fore_color, actual_back_color);  }
 void putc(char c)   { charout(c, actual_fore_color, actual_back_color); }
 void puti(int i)    { intout(i, actual_fore_color, actual_back_color);  }
 
-void printf(char* str, ...) {
+void printf(String string, ...) {
 	int* var_args = &str - 4;
 	char buffer[200];
 	int si = 0, bi = 0, pi = 0;
