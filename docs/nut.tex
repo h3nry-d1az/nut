@@ -168,4 +168,13 @@
   	\item TO to /dev/null
   \end{itemize}
   Then the Makefile compares if exists the nut directory in /usr/include/ directory and your selected architecture and selects the boot file, the arch file and the C compiler flags. Finally, the recipes do the easy work by compiling nut with you configured variables.
+  \\
+  \subsection{Building for x86 target}
+  If you want to build nut for x86, you have 2 options: build it by using a x86 C cross-compiler \& ASM cross-assembler, or build it from an x86 device. If you want to cross-compile nut, you just need to specify the ASSEMBLER variable by your cross-assembler \& the CC variable by your C cross-compiler, it's not necessary to specify the ARCH variable because by default it's x86. Then run the following command:
+  \begin{lstlisting}[language=bash]
+  make CC="your cross-compiler" ASSEMBLER="your cross-assembler"\end{lstlisting}
+  Either you want to build nut from an x86 device, you just need to run the following command:
+  \begin{lstlisting}[language=bash]
+  make CC="your compiler"\end{lstlisting}
+  By default, nut Makefile uses the clang compiler, so don't remember to specify if you are cross-compiling.
 \end{document}
