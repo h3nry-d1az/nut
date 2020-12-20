@@ -177,4 +177,10 @@
   \begin{lstlisting}[language=bash]
   make CC="your compiler"\end{lstlisting}
   By default, nut Makefile uses the clang compiler, so don't remember to specify if you are cross-compiling.
+  \\
+  \subsection{ARM \& raspberry Pi target}
+  Yes, in this section you will learn to build nut for ARM 64-bit, ARM 32-bit, raspberry Pi A, B and Zero, raspberry Pi 2 \& raspberry Pi 3, 4. As the previous section, you can build nut from an ARM device or cross-compile it. If you are cross-compiling nut, you will need the arm-linux-gnueabihf-gcc compiler and the arm-none-eabi-gcc assembler (it's a C compiler but we will use it as an assembler). You can install them by running this commands (for debian based OSs, if you are using Arch LINUX, macOS, RHEL or another OS, you will need to find the packages by yourself):
+  \begin{lstlisting}[language=bash]
+  sudo apt install gcc-arm-linux-gnueabihf\end{lstlisting}
+  Now, you are ready to build nut for ARM, you may have some problems with raspberry Pi A, B, Zero, 2 and ARM32; for these architectures you will need to use some specific flags for these devices, you can find more information on the top of our Makefile, in a section called cross-compilation tips.
 \end{document}
