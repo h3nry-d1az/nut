@@ -4,7 +4,7 @@ info in wiki.osdev.org */
 #define __NUT_KERNEL__
 
 void NutInit() { return; };
-const char* NUT_VERSION = "v0.2.3";
+const char* NUT_VERSION = "v0.2.4";
 
 #include <nut/types.h>
 #include <nut/utils.h>
