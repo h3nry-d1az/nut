@@ -183,4 +183,10 @@
   \begin{lstlisting}[language=bash]
   sudo apt install gcc-arm-linux-gnueabihf\end{lstlisting}
   Now, you are ready to build nut for ARM, you may have some problems with raspberry Pi A, B, Zero, 2 and ARM32; for these architectures you will need to use some specific flags for these devices, you can find more information on the top of our Makefile, in a section called cross-compilation tips.
+  \\
+  \subsection{RISC-V target}
+  As the previous sections, you can cross-compile nut or build it from a RISC-V device. If you are cross-compiling nut, you will need to use the riscv64-linux-gnu-gcc and the riscv64-linux-gnu-as, when you have them installed in your device, just run:
+  \begin{lstlisting}[language=bash]
+  make CC=riscv64-linux-gnu-gcc ASSEMBLER=riscv64-linux-gnu-as ARCH=RISC-V\end{lstlisting}
+  and your binaries will be in the bin directory.
 \end{document}
