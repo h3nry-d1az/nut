@@ -1,2 +1,4 @@
 language = "bash"
 run = "make test"
+
+onBoot = "bash setup/local/setup.deb.sh"
