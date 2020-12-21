@@ -8,6 +8,7 @@ leohetsch.com/create-a-minimal-lisp-like-interpreter-in-c */
 #include <nut/types.h>
 
 
+#include "regs.h"
 #include "operators.h"
 #include "instructions.h"
 #include "alu.h"
