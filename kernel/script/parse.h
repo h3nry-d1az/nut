@@ -10,6 +10,15 @@ int parse(String expression) {
 
         return 1; //not a valid expression
     }
+    char* op = *(expression++);
+
+    int result = 0;
+    switch (op) {
+    case ADD:
+        result = nutlispADD(expression);
+        break;
+    default: break;
+    }
 
 	return 0; //valid expression
 }
