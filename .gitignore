@@ -1,11 +1,6 @@
 # nut.rs binaries
 /nut.rs/target
 
-# NutScript C files
-/kernel/script/y.tab.c
-/kernel/script/y.tab.h
-/kernel/script/lex.yy.c
-
 # nut docs files
 /docs/nut.pdf
 /docs/nut.log
