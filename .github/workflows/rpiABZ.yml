@@ -1,0 +1,23 @@
+name: nut raspberry Pi A, B & Zero CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get the ARM 32 assembler
+      run: sudo apt-get install gcc-arm-none-eabi
+    - name: Get the ARM 32 C cross-compiler
+      run: sudo apt-get install gcc-arm-linux-gnueabihf
+    - name: Locate include files
+      run: sudo make locate EXISTS-NUT-INCLUDE=no
+    - name: Build nut
+      run: sudo make "CC=arm-linux-gnueabihf-gcc" "ASSEMBLER=arm-none-eabi-gcc -mcpu=arm1176jzf-s -fpic -ffreestanding -c" ARCH=raspberrypiA-B-Zero
