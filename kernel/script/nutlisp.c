@@ -7,7 +7,10 @@ leohetsch.com/create-a-minimal-lisp-like-interpreter-in-c */
 #include <nut/alloc.h>
 #include <nut/types.h>
 
+
 #include "operators.h"
+#include "alu.h"
+
 #include "parse.h"
 
 
