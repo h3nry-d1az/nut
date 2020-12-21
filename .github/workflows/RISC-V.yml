@@ -1,0 +1,23 @@
+name: nut RISC-V CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get the RISC-V assembler
+      run: sudo apt-get install binutils-riscv64-linux-gnu
+    - name: Get the RISC-V C cross-compiler
+      run: sudo apt-get install gcc-riscv64-linux-gnu
+    - name: Locate include files
+      run: sudo make locate EXISTS-NUT-INCLUDE=no
+    - name: Build nut
+      run: sudo make "CC=riscv64-linux-gnu-gcc" "ASSEMBLER=riscv64-linux-gnu-as" ARCH=RISC-V
