@@ -1,6 +1,12 @@
 import config
+import cli
 import pexpect
 
+import sys
+
+
+cli.Config(sys.argv)
+# CLI configuration
 
 qemu_cmd = 'qemu-system-'
 qemu_cmd += config.machine + ' '
