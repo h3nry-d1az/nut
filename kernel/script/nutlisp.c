@@ -9,6 +9,7 @@ leohetsch.com/create-a-minimal-lisp-like-interpreter-in-c */
 
 
 #include "operators.h"
+#include "instructions.h"
 #include "alu.h"
 
 #include "parse.h"
