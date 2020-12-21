@@ -52,4 +52,26 @@ double nutlispMUL(String expression) {
     return product;
 }
 
+double nutlispDIV(String expression) {
+    double product = 0; //by default division is 0
+    usize index = 0;
+
+    while (*expression != ')') {
+        if (*expression == ' ') {
+            expression++; continue;
+        }
+
+        if (index == 0) {
+            product = atof(expression++);
+        }
+        else {
+            double m = atof(expression++);
+            product /= m;
+        }
+        index++;
+    }
+
+    return product;
+}
+
 #endif //nutlisp ALU (arithmetic logic unit)
