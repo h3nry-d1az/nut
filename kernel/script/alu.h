@@ -16,4 +16,25 @@ double nutlispADD(String expression) {
     return product;
 }
 
+double nutlispSUB(String expression) {
+    double product = 0; //by default substraction is 0
+    usize index = 0;
+
+    while (*expression != ')') {
+        if (*expression == ' ') {
+            expression++; continue;
+        }
+
+        if (index == 0) {
+            product = atof(expression++);
+        } else {
+            double m = atof(expression++);
+            product -= m;
+        }
+        index++;
+    }
+
+    return product;
+}
+
 #endif //nutlisp ALU (arithmetic logic unit)
