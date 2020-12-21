@@ -37,4 +37,19 @@ double nutlispSUB(String expression) {
     return product;
 }
 
+double nutlispMUL(String expression) {
+    double product = 1; //by default multiplication is 1
+
+    while (*expression != ')') {
+        if (*expression == ' ') {
+            expression++; continue;
+        }
+
+        double m = atof(expression++);
+        product *= m;
+    }
+
+    return product;
+}
+
 #endif //nutlisp ALU (arithmetic logic unit)
