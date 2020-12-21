@@ -151,9 +151,8 @@ locate:
 docs:
 	@$(LATEX) docs/nut.tex > $(TO)
 
-nutscript:
-	@bison -d kernel/script/parser.y -o kernel/script/y.tab.c
-	@flex -o kernel/script/lex.yy.c kernel/script/scanner.l
+nutlisp:
+	@$(CC) -c kernel/script/nutlisp.c -o $(OUTPUT)/nutlisp.o
 
 test:
 	@make NUTOBJ=nut.so
