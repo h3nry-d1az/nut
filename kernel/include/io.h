@@ -157,13 +157,13 @@ void putc(char c)   { charout(c, actual_fore_color, actual_back_color); }
 void puti(int i)    { intout(i, actual_fore_color, actual_back_color);  }
 
 void printf(String string, ...) {
-	int* var_args = &str - 4;
+	int* var_args = &string - 4;
 	char buffer[200];
 	int si = 0, bi = 0, pi = 0;
 
-	while (str[si]) {
-		if (str[si] != '%') {
-			buffer[bi] = str[si];
+	while (string[si]) {
+		if (string[si] != '%') {
+			buffer[bi] = string[si];
 			bi++;
 			si++;
 		}
@@ -171,33 +171,33 @@ void printf(String string, ...) {
 			int w = 0, zp = 0, pp = 0;
 
 			si++;
-			if (str[si] == '#') {
+			if (string[si] == '#') {
 				pp = 1;
 				si++;
 			}
-			if (str[si] == '0') {
+			if (string[si] == '0') {
 				zp = 1;
 				si++;
 			}
-			if (str[si] >= '1' && str[si] <= '9') {
-				w = str[si] - '0';
+			if (string[si] >= '1' && string[si] <= '9') {
+				w = string[si] - '0';
 				si++;
-				if (str[si] >= '0' && str[si] <= '9') {
+				if (string[si] >= '0' && string[si] <= '9') {
 					w = w * 10;
-					w += str[si] - '0';
+					w += string[si] - '0';
 					si++;
 				}
 			}
-			if (str[si] == 's') {
+			if (string[si] == 's') {
 				int l = strlen(var_args[pi]);
 				strcpy(buffer + bi, var_args[pi]);
 				bi += l;
 			}
-			else if (str[si] == 'd') {
+			else if (string[si] == 'd') {
 				int v = var_args[pi];
 				bi += __format(buffer + bi, v, w, zp, 10, 0);
 			}
-			else if (str[si] == 'x') {
+			else if (string[si] == 'x') {
 				int v = var_args[pi];
 				bi += __format(buffer + bi, v, w, zp, 16, pp);
 			}
