@@ -16,7 +16,7 @@ jobs:
     - name: Get the ARM 32 assembler
       run: sudo apt-get install gcc-arm-none-eabi
     - name: Get the ARM 32 C cross-compiler
-      run: sudo apt-get install gcc-arm-linux-gnueabi
+      run: sudo apt-get install gcc-arm-linux-gnueabihf
     - name: Locate include files
       run: sudo make locate EXISTS-NUT-INCLUDE=no
     - name: Build nut
