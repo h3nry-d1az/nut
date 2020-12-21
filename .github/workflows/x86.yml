@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Locate include files
-      run: make locate
+      run: sudo make locate EXISTS-NUT-INCLUDE=no
     - name: Build nut
-      run: make
+      run: sudo make
