@@ -132,7 +132,7 @@ output:
 
 kernel:
 	@make locate INCLUDE-DIR=$(INCLUDE-DIR)
-	@make nutscript
+	@make nutlisp
 	@$(CC) $(CFLAGS) kernel/nut/$(NUTSRC) -I kernel/arch/$(ARCHFILE) -o $(OUTPUT)/$(NUTOBJ)
 
 bootfile:
