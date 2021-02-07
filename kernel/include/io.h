@@ -16,28 +16,9 @@ u8 inb(u16 port) {
 
 #ifdef __X86__
 	asm volatile("inb %1, %0" : "=a"(ret) : "d"(port));
-
-#elif defined(__ARM32__) || \
-	  defined(__ARM64__) || \
-	  defined(__RASPBERRYPI_ABZERO__) || \
-	  defined(__RASPBERRYPI_2__) || \
-	  defined(__RASPBERRYPI_34__)
-	asm volatile("ldr %1, %0" : "=a"(ret) : "d"(port));
-
-#elif defined(__RISC_V__)
-	asm volatile("ld %1, %0" : "=a"(ret) : "d"(port));
-
-#elif defined(__SPARC__)
-	asm volatile("ldub %1, %0" : "=a"(ret) : "d"(port));
-
-#elif defined(__MIPS__)
-	asm volatile("lbu %1, %0" : "=a"(ret) : "d"(port));
-
-#elif defined(__MOS_6502__)
-	asm volatile("ldx %1, %0" : "=a"(ret) : "d"(port));
-
+#else
+	ret = *(volatile u8*)port;
 #endif
-
 	return ret;
 }
 //read from port
@@ -45,26 +26,8 @@ u8 inb(u16 port) {
 function outb(u16 port, u8 data) {
 #ifdef __X86__
 	asm volatile("outb %0, %1" : "=a"(data) : "d"(port));
-
-#elif defined(__ARM32__) || \
-	  defined(__ARM64__) || \
-	  defined(__RASPBERRYPI_ABZERO__) || \
-	  defined(__RASPBERRYPI_2__) || \
-	  defined(__RASPBERRYPI_34__)
-	asm volatile("str %0, %1" : "=a"(port) : "d"(data));
-
-#elif defined(__RISC_V__)
-	asm volatile("sb %0, %1" : "=a"(port) : "d"(data));
-
-#elif defined(__SPARC__)
-	asm volatile("st %0, %1" : "=a"(port) : "d"(data));
-
-#elif defined(__MIPS__)
-	asm volatile("sb %0, %1" : "=a"(port) : "d"(data));
-
-#elif defined(__MOS_6502__)
-	asm volatile("stx %0, %1" : "=a"(port) : "d"(data));
-
+#else
+	*(volatile u8*)port = data;
 #endif
 }
 //print to port
