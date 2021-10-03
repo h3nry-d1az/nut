@@ -151,6 +151,9 @@ locate:
 docs:
 	@$(LATEX) docs/nut.tex > $(TO)
 
+nutvm:
+	@$(CC) -c nutvm/nutvm.c -o $(OUTPUT)/nutvm.o
+
 nutlisp:
 	@$(CC) -c kernel/script/nutlisp.c -o $(OUTPUT)/nutlisp.o
 
