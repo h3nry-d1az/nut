@@ -9,7 +9,7 @@
 
 typedef u8 byte_t;
 
-typedef byte[MEMSIZE*1024]   memory_t;
+typedef byte_t[MEMSIZE*1024] memory_t;
 typedef struct __REGISTERS__ registers_t;
 
 
