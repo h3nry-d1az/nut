@@ -1,4 +1,4 @@
-name: NutLisp build CI
+name: NutLisp build workflow
 
 on:
   push:
