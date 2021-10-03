@@ -1,7 +1,7 @@
 #ifndef __NUTVM_OPCODES_H__
 #define __NUTVM_OPCODES_H__
 
-typedef enum __OPCODE_T__ {
+enum __OPCODE_T__ {
     OP_BRANCH = 0x00,   /* branch */
 
     OP_ADD = 0x01,      /* add */
@@ -30,7 +30,7 @@ typedef enum __OPCODE_T__ {
     OP_RES  = 0x13,     /* reserved (unused) */
     OP_TRAP = 0x14,     /* execute trap */
     OP_NOP  = 0x15      /* no operation */
-} opcode_t;
+};
 
 
 #endif // !__NUTVM_OPCODES_H__
