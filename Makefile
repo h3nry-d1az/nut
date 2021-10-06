@@ -127,10 +127,10 @@ endif
 
 .PHONY : output kernel bootfile \
          modules locate docs    \
-	     nutvm nutlisp test     \
-	     release clean          \
-	     clean-include rmbins   \
-	     rmrelease c2asm config
+         nutvm nutlisp test     \
+         release clean          \
+         clean-include rmbins   \
+         rmrelease c2asm config
 
 .DEFAULT: output
 
