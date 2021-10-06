@@ -132,6 +132,8 @@ endif
 	     clean-include rmbins   \
 	     rmrelease c2asm config
 
+.DEFAULT: kernel
+
 
 output:
 	@# Outputs the boot & kernel object
