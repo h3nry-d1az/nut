@@ -124,6 +124,15 @@ else
 endif
 # Architecture configuration
 
+
+.PHONY : output kernel bootfile \
+         modules locate docs    \
+	     nutvm nutlisp test     \
+	     release clean          \
+	     clean-include rmbins   \
+	     rmrelease c2asm config
+
+
 output:
 	@# Outputs the boot & kernel object
 	@make bootfile ASSEMBLER="$(ASSEMBLER)" BOOTFILE="$(BOOTFILE)" OUTPUT="$(OUTPUT)" BOOTOBJ="$(BOOTOBJ)"
