@@ -3,11 +3,11 @@ The nut kernel
 Nut is a simple small kernel to make powerfull operative systems. Nut is made in C/C++, ASM, Makefile, NutScript and YACC & LEX for the NutScript interpreter. Nut has got many different modules, from I/O to FAT32 file system implementation.
 
 ### Getting nut
-If you want to get the nut kernel, you have 2 options, get the built kernel in the [releases directory](https://github.com/HdbSoft/nut/releases) as a *.zip* file or build it by yourself. You can also get pre-compiled binaries from our [nut bins repository](https://github.com/HdbSoft/nut-bins).
+If you want to get the nut kernel, you have 2 options, get the built kernel in the [releases directory](https://github.com/h3nry-d1az/nut/releases) as a *.zip* file or build it by yourself.
 
 If you want to build nut from source code, you first need to clone the repository into your machine:
 ```bash
-$ git clone https://github.com/HdbSoft/nut.git nut
+$ git clone https://github.com/h3nry-d1az/nut.git nut
 $ cd nut/
 ```
 
@@ -80,6 +80,20 @@ $ make release
 ```
 
 you will see a new directory called release, there will be your binaries, and also a *.zip* file called *nut.YOUR-ARCH.zip*, there will be the nut environment.
+
+#### Nut documentation
+At the moment, you can read the (incomplete) documentation of the nut kernel by going to the [following link](https://h3nry-d1az.github.io/nut/nut-docs.pdf).
+
+In addition, you can also compile it yourself by running the `docs` recipe in the project Makefile, for which you can set the following parameters:
+- The `LATEX` parameter contains the compiler to use for the recipe, the default is `pdflatex`.
+- The `DOCS-OUTPUT-DIR` parameter contains the directory in which the .pdf file will be saved, the default is `.`.
+- The `DOCS-OUTPUT-NAME` parameter contains the name that the aforementioned .pdf file will have, by default it is `nut-docs`.
+- The `VERBOSE` parameter indicates whether `pdflatex` or the program in question should print text to the screen, by default it doesn't, ergo its value is `/dev/null` (because the text will be redirected there).
+
+You can run the recipe with the following command:
+```bash
+$ make docs LATEX=compiler DOCS-OUTPUT-DIR=your-dir DOCS-OUTPUT-NAME=your-name VERBOSE=/dev/null
+```
 
 ### Contributing
 If you want to contribute and you are not a member of HdbSoft, you just need to fork this repository and make your changes there, then make a pull request and we will see it.
