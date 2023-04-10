@@ -1,0 +1,37 @@
+name: website
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: sudo apt install texlive
+      - run: sudo apt install markdown
+      - run: markdown README.md > site/index.html
+      - run: make docs DOCS-OUTPUT-DIR=site
+
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: site/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v1

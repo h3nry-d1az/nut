@@ -58,7 +58,9 @@ C2ASM              = clang -S
 EXISTS-NUT-INCLUDE = yes
 
 LATEX = pdflatex
-TO    = /dev/null
+DOCS-OUTPUT-DIR  = .
+DOCS-OUTPUT-NAME = nut-docs
+VERBOSE = /dev/null
 
 
 ifeq ($(EXISTS-NUT-INCLUDE), no)
@@ -160,7 +162,8 @@ locate:
 	@cp -R kernel/include/* $(INCLUDE-DIR)/nut/
 
 docs:
-	@$(LATEX) docs/nut.tex > $(TO)
+	@$(LATEX) -jobname=$(DOCS-OUTPUT-NAME) -output-directory $(DOCS-OUTPUT-DIR) \
+	          docs/nut.tex > $(VERBOSE)
 
 nutvm:
 	@$(CC) -c nutvm/nutvm.c -o $(OUTPUT)/nutvm.o
